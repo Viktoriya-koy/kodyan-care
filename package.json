@@ -3,12 +3,6 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "node build.js",
-    "build:prod": "NODE_ENV=production node build.js",
-    "dev": "python -m http.server 8000",
-    "deploy": "npm run build:prod && gh-pages -d dist"
-  },
-  "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "build": "echo 'Build se ejecuta via GitHub Actions'"
   }
 }
