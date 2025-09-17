@@ -1,0 +1,22 @@
+name: Rename src to docs
+
+on:
+  workflow_dispatch:  # Permite ejecutarlo manualmente
+
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Rename src to docs
+      run: |
+        if [ -d "src" ]; then
+          git mv src docs
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git commit -m "🚀 Rename src to docs for GitHub Pages"
+          git push
+        else
+          echo "✅ La carpeta docs ya existe"
+        fi
