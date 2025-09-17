@@ -1,11 +1,13 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodyan Care - Tu puerto seguro</title>
+    <title>Kodyan Care - Tu puerto seguro emocional</title>
+    <meta name="description" content="Herramientas digitales de primeros auxilios emocionales para crisis de ansiedad, pánico y estrés. Diseñado con empatía para neurodivergentes.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3"> <!-- Incrementé la versión -->
+    <link rel="stylesheet" href="style.css?v=4">
     <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -19,13 +21,12 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="#herramientas">Herramientas</a></li>
-                    <li><a href="#regulación-emocional">Regulación emocional</a></li>
+                    <li><a href="#regulacion">Regulación</a></li>
                     <li><a href="#recursos">Recursos</a></li>
                     <li><a href="herramientas/emergencia.html" class="btn-emergencia">🚨 Emergencia</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
-            <div class="hamburger">
+            <div class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
@@ -59,7 +60,7 @@
                     </div>
                     <h3>Técnicas de Anclaje</h3>
                     <p>Técnicas 5-4-3-2-1, anclaje con hielo y respiración guiada para ataques de pánico o disociación.</p>
-                    <a href="#anclaje" class="btn btn-outline">Usar Ahora</a>
+                    <a href="herramientas/anclaje.html" class="btn btn-outline">Usar Ahora</a>
                 </div>
                 
                 <!-- 2. Descarga -->
@@ -69,7 +70,7 @@
                     </div>
                     <h3>Descarga Rápida</h3>
                     <p>Escribe lo que sientes sin filtros. Todo se autodestruye en 24 horas. Sin juicios, solo liberación.</p>
-                    <a href="#descarga" class="btn btn-outline">Comenzar</a>
+                    <a href="herramientas/descarga.html" class="btn btn-outline">Comenzar</a>
                 </div>
                 
                 <!-- 3. Audio -->
@@ -79,17 +80,17 @@
                     </div>
                     <h3>Espacio Seguro</h3>
                     <p>Selección curada de ASMR, meditaciones cortas y sonidos para sobrecarga sensorial o insomnio.</p>
-                    <a href="#audio" class="btn btn-outline">Escuchar</a>
+                    <a href="herramientas/audio.html" class="btn btn-outline">Escuchar</a>
                 </div>
                 
-                <!-- 4. Emergencia -->
+                <!-- 4. Sensorial -->
                 <div class="tool-item">
                     <div class="tool-icon">
-                        <img src="resources/pulpo-contactos.png" alt="Contactos de emergencia" class="pulpo-icon">
+                        <img src="resources/pulpo-sensorial.png" alt="Herramientas sensoriales" class="pulpo-icon">
                     </div>
-                    <h3>Contactos de Emergencia</h3>
-                    <p>Líneas de crisis internacionales y recursos de ayuda inmediata. No estás solo.</p>
-                    <a href="#emergencia" class="btn btn-outline">Ver Contactos</a>
+                    <h3>Herramientas Sensoriales</h3>
+                    <p>Pelotas de respiración, burbujas flotantes y texturas visuales para regular ansiedad.</p>
+                    <a href="herramientas/sensorial.html" class="btn btn-outline">Explorar</a>
                 </div>
                 
                 <!-- 5. Guías -->
@@ -99,92 +100,94 @@
                     </div>
                     <h3>Guías Rápidas</h3>
                     <p>Qué hacer en crisis de ansiedad, TDAH, ideación suicida. Pasos claros y concretos.</p>
-                    <a href="#guias" class="btn btn-outline">Leer Guías</a>
+                    <a href="herramientas/guias.html" class="btn btn-outline">Leer Guías</a>
                 </div>
                 
-                <!-- 6. Chat de apoyo (BOT) -->
+                <!-- 6. Chat de apoyo -->
                 <div class="tool-item">
                     <div class="tool-icon">
                         <img src="resources/pulpo-bot.png" alt="Chat de apoyo" class="pulpo-icon">
                     </div>
                     <h3>Chat de Apoyo</h3>
                     <p>Kody está aquí para hacerte compañía y guiarte en momentos difíciles.</p>
-                    <a href="#chat" class="btn btn-outline">Conectar</a>
+                    <a href="herramientas/chat.html" class="btn btn-outline">Conectar</a>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Sección regulación emocional -->
-  <section class="regulacion-emocional" id="regulacion">
-    <div class="container">
-        <div class="section-title">
-            <h2>🌪️🌈 Entender tus Tormentas Emocionales</h2>
-            <p>Un mapa simple para cuando las emociones abruman (neurodivergente-friendly)</p>
-        </div>
-        
-        <div class="regulacion-grid">
-            <!-- 1. RECONOCER -->
-            <div class="regulacion-item">
-                <div class="regulacion-icon">🔍</div>
-                <h3>1. Reconocer</h3>
-                <p>"¿Qué estoy sintiendo EN EL CUERPO?"</p>
-                <ul>
-                    <li>Opresión en el pecho</li>
-                    <li>Manos temblorosas</li>
-                    <li>Corazón acelerado</li>
-                </ul>
-                <small>No juzgues, solo observá.</small>
+    <section class="regulacion-emocional" id="regulacion">
+        <div class="container">
+            <div class="section-title">
+                <h2>🌪️🌈 Entender tus Tormentas Emocionales</h2>
+                <p>Un mapa simple para cuando las emociones abruman (neurodivergente-friendly)</p>
             </div>
             
-            <!-- 2. NOMBRAR -->
-            <div class="regulacion-item">
-                <div class="regulacion-icon">🏷️</div>
-                <h3>2. Nombrar</h3>
-                <p>"Esto es ______"</p>
-                <ul>
-                    <li>Ansiedad</li>
-                    <li>Sobrecarga sensorial</li>
-                    <li>Agotamiento</li>
-                    <li>Crisis de meltdown</li>
-                </ul>
-                <small>Put a name to the monster.</small>
+            <div class="regulacion-grid">
+                <!-- 1. RECONOCER -->
+                <div class="regulacion-item">
+                    <div class="regulacion-icon">🔍</div>
+                    <h3>1. Reconocer</h3>
+                    <p>"¿Qué estoy sintiendo EN EL CUERPO?"</p>
+                    <ul>
+                        <li>Opresión en el pecho</li>
+                        <li>Manos temblorosas</li>
+                        <li>Corazón acelerado</li>
+                    </ul>
+                    <small>No juzgues, solo observá.</small>
+                </div>
+                
+                <!-- 2. NOMBRAR -->
+                <div class="regulacion-item">
+                    <div class="regulacion-icon">🏷️</div>
+                    <h3>2. Nombrar</h3>
+                    <p>"Esto es ______"</p>
+                    <ul>
+                        <li>Ansiedad</li>
+                        <li>Sobrecarga sensorial</li>
+                        <li>Agotamiento</li>
+                        <li>Crisis de meltdown</li>
+                    </ul>
+                    <small>Ponéle nombre al monstruo.</small>
+                </div>
+                
+                <!-- 3. REGULAR -->
+                <div class="regulacion-item">
+                    <div class="regulacion-icon">🛠️</div>
+                    <h3>3. Regular</h3>
+                    <p>"¿Qué necesito AHORA?"</p>
+                    <ul>
+                        <li>Calmar (respiración, sonidos)</li>
+                        <li>Expresar (escribir, hablar)</li>
+                        <li>Distraer (movimiento, sensaciones)</li>
+                    </ul>
+                    <small>Usá las herramientas como apoyo para un alivio rápido.</small>
+                </div>
+                
+                <!-- 4. INTEGRAR -->
+                <div class="regulacion-item">
+                    <div class="regulacion-icon">🧩</div>
+                    <h3>4. Integrar</h3>
+                    <p>"¿Qué aprendí de esta crisis?"</p>
+                    <ul>
+                        <li>Mis detonantes</li>
+                        <li>Qué me ayudó más</li>
+                        <li>Qué necesito evitar</li>
+                    </ul>
+                    <small>Data para la próxima tormenta.</small>
+                </div>
             </div>
             
-            <!-- 3. REGULAR -->
-            <div class="regulacion-item">
-                <div class="regulacion-icon">🛠️</div>
-                <h3>3. Regular</h3>
-                <p>"¿Qué necesito AHORA?"</p>
-                <ul>
-                    <li>Calmar (respiración, sonidos)</li>
-                    <li>Expresar (escribir, hablar)</li>
-                    <li>Distraer (movimiento, sensaciones)</li>
-                </ul>
-                <small>Usá las herramientas como apoyo para un alivio rápido.</small>
-            </div>
-            
-            <!-- 4. INTEGRAR -->
-            <div class="regulacion-item">
-                <div class="regulacion-icon">🧩</div>
-                <h3>4. Integrar</h3>
-                <p>"¿Qué aprendí de esta crisis?"</p>
-                <ul>
-                    <li>Mis detonantes</li>
-                    <li>Qué me ayudó más</li>
-                    <li>Qué necesito evitar</li>
-                </ul>
-                <small>Data para la próxima tormenta.</small>
+            <div class="regulacion-extra">
+                <p>💡 <strong>Tip neurodivergente:</strong> No todas las crisis son iguales. 
+                   <a href="herramientas/guias.html">Mirá las guías específicas para meltdown, shutdown y burnout</a>.</p>
             </div>
         </div>
-        
-        <div class="regulacion-extra">
-            <p>💡 <strong>Tip neurodivergente:</strong> No todas las crisis son iguales. 
-               <a href="herramientas/guias.html">Mirá las guías específicas para meltdown, shutdown y burnout</a>.</p>
-        </div>
-    </div>
-</section>
-    <!-- Footer (Coherente con HQ pero con colores Care) -->
-    <footer>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
@@ -195,18 +198,27 @@
                 <div class="footer-links">
                     <h4>Herramientas</h4>
                     <ul>
-                        <li><a href="#herramientas">Grounding</a></li>
-                        <li><a href="#herramientas">Descarga Rápida</a></li>
-                        <li><a href="#herramientas">Espacio Seguro</a></li>
+                        <li><a href="herramientas/anclaje.html">Técnicas de Anclaje</a></li>
+                        <li><a href="herramientas/descarga.html">Descarga Rápida</a></li>
+                        <li><a href="herramientas/audio.html">Espacio Seguro</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
                     <h4>Recursos</h4>
                     <ul>
-                        <li><a href="#">Líneas de Crisis</a></li>
-                        <li><a href="#">Tips Diarios</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="herramientas/emergencia.html">Líneas de Crisis</a></li>
+                        <li><a href="herramientas/guias.html">Guías Rápidas</a></li>
+                        <li><a href="#regulacion">Regulación Emocional</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:care@koyhq.com">care@koyhq.com</a></li>
+                        <li><a href="https://instagram.com/kodyan.care" target="_blank">Instagram</a></li>
+                        <li><a href="https://koyhq.com" target="_blank">Koy HQ</a></li>
                     </ul>
                 </div>
             </div>
@@ -218,7 +230,6 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
 </body>
-
 </html>
