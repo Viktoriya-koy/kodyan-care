@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guías de Crisis | Kodyan Care</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .guias-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .guia {
+            background: var(--color-surface);
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--color-guide);
+        }
+
+        .guia h2 {
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .guia .subtitulo {
+            color: var(--color-text-light);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .pasos {
+            background: var(--color-secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .pasos ol {
+            margin-left: 1.5rem;
+        }
+
+        .pasos li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .importante {
+            background: #fff5f5;
+            border-left: 4px solid var(--color-emergency);
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+      <header-component></header-component>
+
+
+    <section class="herramienta-detalle">
+        <div class="container">
+            <h1>📋 Guías Rápidas para Momentos Difíciles</h1>
+            <p class="subtitulo">Pasos concretos para cuando las cosas se ponen abrumadoras</p>
+
+            <div class="guias-container">
+                <!-- GUÍA 1: CRISIS DE ANSIEDAD -->
+                <div class="guia">
+                    <h2>🌪️ Crisis de Ansiedad / Ataque de Pánico</h2>
+                    <p class="subtitulo">"Qué hacer cuando el cuerpo dice 'peligro' y la mente sabe que no lo hay."</p>
+                    <div class="pasos">
+                        <ol>
+                            <li><strong>Reconocé:</strong> "Esto es ansiedad, no me va a pasar nada."</li>
+                            <li><strong>Anclaje:</strong> Usá la técnica <a href="anclaje.html">5-4-3-2-1</a> o la respiración cuadrada.</li>
+                            <li><strong>Temperatura:</strong> Tomá agua fría o tocá una pared fría.</li>
+                            <li><strong>Espacio:</strong> Si podés, movete a otro lugar (a otra habitación, afuera).</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- GUÍA 2: IDEACIÓN SUICIDA -->
+                <div class="guia">
+                    <h2>🌑 Ideación Suicida Pasiva</h2>
+                    <p class="subtitulo">"Cómo esperar a que pase la tormenta más oscura."</p>
+                    <div class="pasos">
+                        <ol>
+                            <li><strong>Postergación:</strong> "Voy a esperar 24 horas antes de actuar."</li>
+                            <li><strong>Contacto:</strong> Escribile a alguien (aunque sea decir 'Hola, ¿cómo estás?').</li>
+                            <li><strong>Seguridad:</strong> Alejá de tu vista cualquier objeto de riesgo.</li>
+                            <li><strong>Espacio seguro:</strong> Buscá un lugar donde puedas llorar o gritar sin peligro.</li>
+                        </ol>
+                    </div>
+                    <div class="importante">
+                        <p>🚨 <strong>Si los pensamientos son activos y tenés un plan:</strong> Llamá a una línea de crisis inmediatamente. No estás sola.</p>
+                    </div>
+                </div>
+
+                <!-- GUÍA 3: AUTOLESIÓN -->
+                <div class="guia">
+                    <h2>⚡ Urgencia de Autolesión</h2>
+                    <p class="subtitulo">"Cómo redirigir el impulso cuando duele demasiado."</p>
+                    <div class="pasos">
+                        <ol>
+                            <li><strong>Sustitución sensorial:</strong> 
+                                <ul>
+                                    <li>Hielo en las muñecas o nuca</li>
+                                    <li>Goma elástica en la muñeca (snap suave)</li>
+                                    <li>Deportes intensos (correr, saltar)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Expresión creativa:</strong> 
+                                <ul>
+                                    <li>Pintar con los dedos con témpera roja</li>
+                                    <li>Escribir en papel y romperlo después</li>
+                                </ul>
+                            </li>
+                            <li><strong>Contacto de emergencia:</strong> Llamá a alguien o a una línea de crisis ANTES de actuar.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- GUÍA 4: PARÁLISIS POR TDAH -->
+                <div class="guia">
+                    <h2>🎯 Parálisis por TDAH</h2>
+                    <p class="subtitulo">"Cómo destrabar el motor cuando la gasolina está llena pero no arranca."</p>
+                    <div class="pasos">
+                        <ol>
+                            <li><strong>Microtarea:</strong> Elegí la cosa más estúpidamente pequeña que puedas hacer (ej: lavar un solo plato).</li>
+                            <li><strong>Body doubling:</strong> Llamá a alguien o poné un video de alguien trabajando en silencio.</li>
+                            <li><strong>Cambio de escena:</strong> Andá a trabajar a una cafetería o a otra habitación.</li>
+                            <li><strong>Tiempo definido:</strong> "Solo voy a hacer esto por 5 minutos."</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer-component></footer-component>
+    
+    <script type="module" src="/js/script.js"></script>
+</body>
+</html>
+
