@@ -3,44 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guías para Crisis Neurodivergentes | Kodyan Care</title>
+    <title>Guías Completas de Crisis | Kodyan Care</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* ESTILOS ESPECÍFICOS PARA GUÍAS */
+        /* ESTILOS MEJORADOS PARA GUÍAS COMPLETAS */
         .herramienta-detalle {
             padding: 8rem 0 4rem;
             min-height: 100vh;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+            background: linear-gradient(135deg, #f8f5ff 0%, #f0edff 100%);
         }
 
-        .guias-container {
+        .guias-completas-container {
             max-width: 1000px;
             margin: 2rem auto;
             padding: 1rem;
         }
 
-        .categoria {
-            margin-bottom: 4rem;
+        /* MENÚ DE NAVEGACIÓN INTERNA */
+        .guias-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            justify-content: center;
         }
 
-        .categoria h2 {
-            color: var(--color-text);
-            margin-bottom: 2rem;
-            font-size: 2.2rem;
-            text-align: center;
+        .guia-btn {
+            background: var(--color-secondary);
+            border: 2px solid transparent;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
+            gap: 0.5rem;
         }
 
-        .categoria h2 .emoji {
-            font-size: 2.5rem;
+        .guia-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--color-primary);
         }
 
-        .guia {
+        .guia-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        /* CATEGORÍAS */
+        .categoria-guia {
+            margin-bottom: 4rem;
+            scroll-margin-top: 120px;
+        }
+
+        .categoria-guia h2 {
+            color: var(--color-text);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--color-primary);
+        }
+
+        /* TARJETAS DE GUÍA */
+        .guia-card {
             background: var(--color-surface);
             margin-bottom: 2.5rem;
             padding: 2.5rem;
@@ -50,74 +81,67 @@
             border-left: 4px solid;
         }
 
-        .guia:hover {
+        .guia-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
         }
 
-        /* Colores específicos para cada tipo de crisis */
-        .guia.meltdown {
-            border-left-color: #FF6B6B;
-        }
+        /* Colores por tipo de crisis */
+        .guia-card.meltdown { border-left-color: #FF6B6B; }
+        .guia-card.shutdown { border-left-color: #6D67E4; }
+        .guia-card.burnout { border-left-color: #4ECDC4; }
+        .guia-card.ansiedad { border-left-color: #8A85FF; }
+        .guia-card.tdah { border-left-color: #453F90; }
+        .guia-card.suicida { border-left-color: #FF6B6B; }
+        .guia-card.autolesion { border-left-color: #FFD166; }
 
-        .guia.shutdown {
-            border-left-color: #6D67E4;
-        }
-
-        .guia.burnout {
-            border-left-color: #4ECDC4;
-        }
-
-        .guia h3 {
+        .guia-card h3 {
             color: var(--color-text);
             margin-bottom: 1rem;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .guia .definicion {
-            color: var(--color-text-light);
-            font-style: italic;
+        .definicion-rapida {
+            background: var(--color-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
             margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-            border-left: 3px solid var(--color-secondary);
+            font-style: italic;
+            border-left: 3px solid currentColor;
         }
 
-        .seccion {
+        .seccion-guia {
             margin-bottom: 2rem;
         }
 
-        .seccion h4 {
+        .seccion-guia h4 {
             color: var(--color-primary);
             margin-bottom: 1rem;
             font-size: 1.2rem;
         }
 
-        .pasos {
+        .pasos-guia {
             background: var(--color-secondary);
             padding: 1.8rem;
             border-radius: 15px;
             margin: 1.5rem 0;
         }
 
-        .pasos ol, .pasos ul {
+        .pasos-guia ol, .pasos-guia ul {
             margin-left: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .pasos li {
+        .pasos-guia li {
             margin-bottom: 1rem;
             line-height: 1.6;
             color: var(--color-text);
         }
 
-        .pasos strong {
-            color: var(--color-primary-dark);
-        }
-
-        .alerta {
+        .alerta-urgente {
             background: #fff5f5;
             border-left: 4px solid var(--color-emergency);
             padding: 1.5rem;
@@ -125,55 +149,40 @@
             border-radius: 10px;
         }
 
-        .tip {
+        .alerta-urgente a {
+            color: var(--color-emergency);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .tip-guia {
             background: #f0f9ff;
             border-left: 4px solid var(--color-guide);
             padding: 1.2rem;
             margin: 1.5rem 0;
             border-radius: 10px;
-            font-style: italic;
         }
 
-        .nota {
+        .no-hacer {
             background: #fffaf0;
             border-left: 4px solid #FFD166;
             padding: 1.2rem;
             margin: 1.5rem 0;
             border-radius: 10px;
-            font-size: 0.95rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .guias-container {
-                padding: 0.5rem;
-            }
-            
-            .guia {
-                padding: 2rem;
-            }
-            
-            .categoria h2 {
-                font-size: 1.8rem;
-            }
-            
-            .guia h3 {
-                font-size: 1.4rem;
-            }
         }
 
         /* Números de pasos */
-        .pasos ol {
+        .pasos-guia ol {
             counter-reset: step-counter;
         }
 
-        .pasos ol li {
+        .pasos-guia ol li {
             counter-increment: step-counter;
             position: relative;
             padding-left: 2.5rem;
         }
 
-        .pasos ol li:before {
+        .pasos-guia ol li:before {
             content: counter(step-counter);
             position: absolute;
             left: 0;
@@ -188,6 +197,27 @@
             justify-content: center;
             font-weight: bold;
             font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guias-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .guia-btn {
+                width: 200px;
+                justify-content: center;
+            }
+            
+            .guia-card {
+                padding: 2rem;
+            }
+            
+            .categoria-guia h2 {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
@@ -215,192 +245,224 @@
     <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <main class="herramienta-detalle">
         <div class="container">
-            <h1>📋 Guías para Crisis Neurodivergentes</h1>
-            <p class="subtitulo">Abordajes específicos para meltdown, shutdown y burnout. Porque no todas las crisis son iguales.</p>
+            <h1>📋 Guías Completas de Crisis</h1>
+            <p class="subtitulo">Todas las herramientas en un solo lugar. Protocolos claros para diferentes tipos de crisis.</p>
 
-            <div class="guias-container">
-                <!-- MELTDOWN -->
-                <div class="categoria">
-                    <h2><span class="emoji">🌋</span> Meltdown</h2>
+            <!-- MENÚ DE NAVEGACIÓN INTERNA -->
+            <div class="guias-menu">
+                <button class="guia-btn" onclick="scrollToGuide('neurodivergentes')">
+                    <span>🌋</span>Neurodivergentes
+                </button>
+                <button class="guia-btn" onclick="scrollToGuide('ansiedad')">
+                    <span>🌪️</span>Ansiedad
+                </button>
+                <button class="guia-btn" onclick="scrollToGuide('tdah')">
+                    <span>⚡</span>TDAH
+                </button>
+                <button class="guia-btn" onclick="scrollToGuide('suicida')">
+                    <span>🌑</span>Ideación Suicida
+                </button>
+                <button class="guia-btn" onclick="scrollToGuide('autolesion')">
+                    <span>⚡</span>Autolesiones
+                </button>
+            </div>
+
+            <div class="guias-completas-container">
+                <!-- CRISIS NEURODIVERGENTES -->
+                <div class="categoria-guia" id="neurodivergentes">
+                    <h2><span>🌋</span> Crisis Neurodivergentes</h2>
                     
-                    <div class="guia meltdown">
-                        <h3>⚡ ¿Qué es un Meltdown?</h3>
-                        <p class="definicion">Explosión externa de sobrecarga. El sistema colapsa hacia afuera: gritos, llanto, autoagresión.</p>
+                    <!-- MELTDOWN -->
+                    <div class="guia-card meltdown">
+                        <h3>🌋 Meltdown</h3>
+                        <div class="definicion-rapida">
+                            <p>Explosión externa de sobrecarga. El sistema colapsa hacia afuera: gritos, llanto, autoagresión.</p>
+                        </div>
                         
-                        <div class="seccion">
-                            <h4>🚨 Señales de que viene un Meltdown:</h4>
-                            <ul>
-                                <li>Irritabilidad extrema</li>
-                                <li>Respuestas cortantes o gritos</li>
-                                <li>Hiperreactividad a estímulos</li>
-                                <li>Movimientos repetitivos intensos</li>
-                                <li>Pensamiento catastrófico</li>
-                            </ul>
-                        </div>
-
-                        <div class="seccion">
-                            <h4>🆘 Qué hacer DURANTE el Meltdown:</h4>
-                            <div class="pasos">
+                        <div class="seccion-guia">
+                            <h4>🆘 Qué hacer DURANTE:</h4>
+                            <div class="pasos-guia">
                                 <ol>
-                                    <li><strong>Seguridad primero:</strong> Alejar objetos peligrosos o rompibles.</li>
-                                    <li><strong>Espacio seguro:</strong> Llevar a un lugar tranquilo y oscuro si es posible.</li>
-                                    <li><strong>No razonar:</strong> En este punto, el cerebro no procesa lenguaje.</li>
-                                    <li><strong>Reducir estímulos:</strong> Apagar luces, silenciar sonidos.</li>
-                                    <li><strong>Presión profunda:</strong> Mantas pesadas o autoabrazo fuerte.</li>
-                                    <li><strong>Dejar que pase:</strong> No intentar detenerlo, sino contenerlo.</li>
+                                    <li><strong>Seguridad primero:</strong> Alejar objetos peligrosos</li>
+                                    <li><strong>Espacio seguro:</strong> Lugar tranquilo y oscuro</li>
+                                    <li><strong>No razonar:</strong> El cerebro no procesa lenguaje</li>
+                                    <li><strong>Reducir estímulos:</strong> Luces, sonidos</li>
+                                    <li><strong>Presión profunda:</strong> Mantas pesadas o autoabrazo</li>
                                 </ol>
                             </div>
-                        </div>
-
-                        <div class="seccion">
-                            <h4>💆‍♀️ Qué hacer DESPUÉS del Meltdown:</h4>
-                            <div class="pasos">
-                                <ol>
-                                    <li><strong>Hidratar:</strong> Beber agua lentamente.</li>
-                                    <li><strong>Descanso sensorial:</strong> Silencio, oscuridad, soledad.</li>
-                                    <li><strong>Comida reconfortante:</strong> Algo familiar y de textura segura.</li>
-                                    <li><strong>No hablar del tema:</strong> Hasta que la persona esté recuperada.</li>
-                                    <li><strong>Autocompasión:</strong> Recordar que no es culpa de nadie.</li>
-                                </ol>
-                            </div>
-                        </div>
-
-                        <div class="alerta">
-                            <p>🚨 <strong>NO HACER:</strong> Gritar, castigar, razonar, minimizar, tomar personalmente la crisis.</p>
-                        </div>
-
-                        <div class="tip">
-                            <p>💡 <strong>Tip preventivo:</strong> Llevar un registro de detonantes comunes (ciertos sonidos, luces, situaciones sociales).</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- SHUTDOWN -->
-                <div class="categoria">
-                    <h2><span class="emoji">🐚</span> Shutdown</h2>
-                    
-                    <div class="guia shutdown">
-                        <h3>🌀 ¿Qué es un Shutdown?</h3>
-                        <p class="definicion">Implosión interna de sobrecarga. El sistema se apaga: mutismo, inmovilidad, desconexión.</p>
+                    <!-- SHUTDOWN -->
+                    <div class="guia-card shutdown">
+                        <h3>🐚 Shutdown</h3>
+                        <div class="definicion-rapida">
+                            <p>Implosión interna de sobrecarga. El sistema se apaga: mutismo, inmovilidad, desconexión.</p>
+                        </div>
                         
-                        <div class="seccion">
-                            <h4>🚨 Señales de que viene un Shutdown:</h4>
-                            <ul>
-                                <li>Dificultad para hablar</li>
-                                <li>Movimientos lentos o congelados</li>
-                                <li>Mirada perdida o vacía</li>
-                                <li>No responde a preguntas</li>
-                                <li>Retraimiento extremo</li>
-                            </ul>
-                        </div>
-
-                        <div class="seccion">
-                            <h4>🆘 Qué hacer DURANTE el Shutdown:</h4>
-                            <div class="pasos">
+                        <div class="seccion-guia">
+                            <h4>🆘 Qué hacer DURANTE:</h4>
+                            <div class="pasos-guia">
                                 <ol>
-                                    <li><strong>No forzar:</strong> No exigir hablar o moverse.</li>
-                                    <li><strong>Comunicación no verbal:</strong> Ofrecer agua, una manta, papel para escribir.</li>
-                                    <li><strong>Espacio seguro:</strong> Lugar tranquilo sin expectativas.</li>
-                                    <li><strong>Presencia silenciosa:</strong> Estar cerca sin hablar.</li>
-                                    <li><strong>Tiempo:</strong> Esperar sin presionar.</li>
+                                    <li><strong>No forzar:</strong> No exigir hablar o moverse</li>
+                                    <li><strong>Comunicación no verbal:</strong> Ofrecer agua, papel para escribir</li>
+                                    <li><strong>Presencia silenciosa:</strong> Estar cerca sin hablar</li>
+                                    <li><strong>Tiempo:</strong> Esperar sin presionar</li>
                                 </ol>
                             </div>
-                        </div>
-
-                        <div class="seccion">
-                            <h4>💆‍♀️ Qué hacer DESPUÉS del Shutdown:</h4>
-                            <div class="pasos">
-                                <ol>
-                                    <li><strong>Reconexión suave:</strong> Actividades tranquilas y solitarias.</li>
-                                    <li><strong>Alimentos reconfortantes:</strong> Sopas, tés, cosas suaves.</li>
-                                    <li><strong>Descanso prolongado:</strong> Puede tomar horas o días recuperarse.</li>
-                                    <li><strong>No interrogatorio:</strong> No preguntar "¿qué pasó?" inmediatamente.</li>
-                                </ol>
-                            </div>
-                        </div>
-
-                        <div class="alerta">
-                            <p>🚨 <strong>NO HACER:</strong> Tocar sin permiso, hablar mucho, hacer preguntas, forzar interacción.</p>
-                        </div>
-
-                        <div class="tip">
-                            <p>💡 <strong>Tip preventivo:</strong> Aprender a reconocer las primeras señales de sobrecarga para retirarse a tiempo.</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- BURNOUT -->
-                <div class="categoria">
-                    <h2><span class="emoji">🪫</span> Burnout Neurodivergente</h2>
-                    
-                    <div class="guia burnout">
-                        <h3>🔥 ¿Qué es el Burnout Neurodivergente?</h3>
-                        <p class="definicion">Agotamiento crónico por el esfuerzo constante de "pasar por normal" en un mundo neurotípico.</p>
-                        
-                        <div class="seccion">
-                            <h4>🚨 Señales de Burnout:</h4>
-                            <ul>
-                                <li>Agotamiento extremo que no mejora con descanso</li>
-                                <li>Pérdida de habilidades previamente dominadas</li>
-                                <li>Aumento de sensibilidades sensoriales</li>
-                                <li>Dificultad para tareas básicas (aseo, comida)</li>
-                                <li>Sentimiento de incapacidad total</li>
-                            </ul>
+                    <!-- BURNOUT -->
+                    <div class="guia-card burnout">
+                        <h3>🪫 Burnout Neurodivergente</h3>
+                        <div class="definicion-rapida">
+                            <p>Agotamiento crónico por el esfuerzo constante de "pasar por normal" en un mundo neurotípico.</p>
                         </div>
-
-                        <div class="seccion">
+                        
+                        <div class="seccion-guia">
                             <h4>🆘 Manejo del Burnout:</h4>
-                            <div class="pasos">
+                            <div class="pasos-guia">
                                 <ol>
-                                    <li><strong>Reducción radical de expectativas:</strong> Permitirse no funcionar.</li>
-                                    <li><strong>Descanso sensorial:</strong> Minimizar estímulos al máximo.</li>
-                                    <li><strong>Rutinas mínimas:</strong> Solo lo esencial para sobrevivir.</li>
-                                    <li><strong>Comidas fáciles:</strong> Comida precocida, delivery, cosas simples.</li>
-                                    <li><strong>Comunicación de necesidades:</strong> Pedir ayuda específica.</li>
+                                    <li><strong>Reducción radical de expectativas</strong></li>
+                                    <li><strong>Descanso sensorial</strong></li>
+                                    <li><strong>Rutinas mínimas</strong></li>
+                                    <li><strong>Comidas fáciles</strong></li>
+                                    <li><strong>Comunicación de necesidades</strong></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANSIEDAD/PÁNICO -->
+                <div class="categoria-guia" id="ansiedad">
+                    <h2><span>🌪️</span> Ansiedad y Pánico</h2>
+                    
+                    <div class="guia-card ansiedad">
+                        <h3>💨 Crisis de Ansiedad/Pánico</h3>
+                        <div class="definicion-rapida">
+                            <p>Tu cuerpo activa la alarma de peligro aunque no haya peligro real. Corazón acelerado, temblores, dificultad para respirar.</p>
+                        </div>
+
+                        <div class="seccion-guia">
+                            <h4>🆘 Qué hacer DURANTE:</h4>
+                            <div class="pasos-guia">
+                                <ol>
+                                    <li><strong>Reconocer:</strong> "Esto es ansiedad, no me va a pasar nada"</li>
+                                    <li><strong>Anclaje 5-4-3-2-1:</strong> 5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles, 1 que saboreas</li>
+                                    <li><strong>Temperatura:</strong> Agua fría en muñecas o nuca</li>
+                                    <li><strong>Respiración cuadrada:</strong> 4 segundos inhalar, 4 mantener, 4 exhalar, 4 pausa</li>
                                 </ol>
                             </div>
                         </div>
 
-                        <div class="seccion">
-                            <h4>💆‍♀️ Recuperación a Largo Plazo:</h4>
-                            <div class="pasos">
+                        <div class="alerta-urgente">
+                            <p>🚨 <strong>Si dura más de 30 minutos:</strong> Contactar a <a href="emergencias.html">líneas de crisis</a> o atención médica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TDAH -->
+                <div class="categoria-guia" id="tdah">
+                    <h2><span>⚡</span> TDAH</h2>
+                    
+                    <div class="guia-card tdah">
+                        <h3>🎯 Parálisis por Sobrestimulación TDAH</h3>
+                        <div class="definicion-rapida">
+                            <p>El cerebro recibe demasiada información y se bloquea. No es pereza, es sobrecarga del sistema.</p>
+                        </div>
+
+                        <div class="seccion-guia">
+                            <h4>🆘 Qué hacer cuando te paralizás:</h4>
+                            <div class="pasos-guia">
                                 <ol>
-                                    <li><strong>Reevaluar enmascaramiento:</strong> ¿Dónde estoy forzando demasiado?</li>
-                                    <li><strong>Acomodaciones permanentes:</strong> Cambios reales en el estilo de vida.</li>
-                                    <li><strong>Límites firmes:</strong> Aprender a decir no.</li>
-                                    <li><strong>Comunidad:</strong> Conectar con otros neurodivergentes.</li>
-                                    <li><strong>Autocompasión radical:</strong> Entender que no es pereza, es agotamiento.</li>
+                                    <li><strong>Microtarea:</strong> Elegir la cosa más pequeña posible</li>
+                                    <li><strong>Body doubling:</strong> Llamar a alguien o poner video</li>
+                                    <li><strong>Cambio de ambiente:</strong> Ir a otra habitación o café</li>
+                                    <li><strong>Tiempo definido:</strong> "Solo 5 minutos"</li>
                                 </ol>
                             </div>
                         </div>
 
-                        <div class="nota">
-                            <p>⏳ <strong>Nota:</strong> El burnout neurodivergente puede durar semanas, meses o incluso años. La recuperación es lenta y no lineal.</p>
+                        <div class="no-hacer">
+                            <p>🚫 <strong>No sirve:</strong> Regañarse, forzarse, castigarse. El TDAH no responde a la presión.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IDEACIÓN SUICIDA -->
+                <div class="categoria-guia" id="suicida">
+                    <h2><span>🌑</span> Ideación Suicida</h2>
+                    
+                    <div class="guia-card suicida">
+                        <h3>💭 Pensamientos de "No quiero estar aquí"</h3>
+                        <div class="definicion-rapida">
+                            <p>Pensamientos de no querer existir sin un plan activo. Es una señal de dolor extremo, no de debilidad.</p>
                         </div>
 
-                        <div class="tip">
-                            <p>💡 <strong>Tip preventivo:</strong> Incorporar descansos regulares ANTES de llegar al agotamiento.</p>
+                        <div class="seccion-guia">
+                            <h4>🆘 Protocolo de 24 horas:</h4>
+                            <div class="pasos-guia">
+                                <ol>
+                                    <li><strong>Postergar:</strong> "Voy a esperar 24 horas"</li>
+                                    <li><strong>Contacto seguro:</strong> Llamar a alguien o a <a href="emergencias.html">línea de crisis</a></li>
+                                    <li><strong>Seguridad ambiental:</strong> Alejar objetos de riesgo</li>
+                                    <li><strong>Espacio para sentir:</strong> Lugar seguro para llorar/gritar</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="alerta-urgente">
+                            <p>🚨 <strong>Si los pensamientos son activos con plan:</strong> Contactá ayuda profesional INMEDIATAMENTE.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AUTOLESIONES -->
+                <div class="categoria-guia" id="autolesion">
+                    <h2><span>⚡</span> Autolesiones</h2>
+                    
+                    <div class="guia-card autolesion">
+                        <h3>🩹 Cuando el dolor interno pide salir</h3>
+                        <div class="definicion-rapida">
+                            <p>Impulso de lastimarse para liberar dolor emocional intenso. No es manipulación, es coping desesperado.</p>
+                        </div>
+
+                        <div class="seccion-guia">
+                            <h4>🆘 Alternativas inmediatas:</h4>
+                            <div class="pasos-guia">
+                                <ol>
+                                    <li><strong>Sustitución sensorial:</strong> Hielo, goma elástica, deporte</li>
+                                    <li><strong>Expresión creativa:</strong> Pintar, escribir y romper, modelar</li>
+                                    <li><strong>Contacto de emergencia:</strong> Llamar a alguien ANTES de actuar</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="alerta-urgente">
+                            <p>🚨 <strong>Si la lesión es grave:</strong> Buscar atención médica inmediata.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- RECURSOS ADICIONALES -->
-                <div class="categoria">
-                    <h2><span class="emoji">🔗</span> Recursos Adicionales</h2>
+                <div class="categoria-guia">
+                    <h2><span>🔗</span> Recursos Adicionales</h2>
                     
-                    <div class="guia">
-                        <h3>📚 Para aprender más:</h3>
-                        <div class="pasos">
+                    <div class="guia-card">
+                        <h3>📚 Para seguir aprendiendo</h3>
+                        <div class="pasos-guia">
                             <ul>
-                                <li><strong>Libros:</strong> "Divergent Mind" de Jenara Nerenberg</li>
-                                <li><strong>Webs:</strong> NeuroClastic, Embrace Autism</li>
-                                <li><strong>Comunidades:</strong> Redes sociales de #ActuallyAutistic</li>
-                                <li><strong>Terapeutas:</strong> Buscar profesionales neurodivergentes o neuroafirmativos</li>
+                                <li><strong>Terapia DBT:</strong> Para desregulación emocional</li>
+                                <li><strong>Grupos de apoyo:</strong> Compartir con pares</li>
+                                <li><strong>Psiquiatra:</strong> Evaluación médica</li>
+                                <li><strong>Workbooks:</strong> Ejercicios prácticos</li>
                             </ul>
                         </div>
 
-                        <div class="tip">
-                            <p>💡 <strong>Recordá:</strong> Sos el experto en tu propia experiencia. Nadie sabe mejor que vos lo que necesitás.</p>
+                        <div class="tip-guia">
+                            <p>💡 <strong>Recordá:</strong> La recuperación no es lineal. Cada crisis superada te hace más fuerte.</p>
                         </div>
                     </div>
                 </div>
@@ -430,7 +492,7 @@
                     <h4>Recursos</h4>
                     <ul>
                         <li><a href="emergencias.html">Líneas de Crisis</a></li>
-                        <li><a href="guias.html">Guías Específicas</a></li>
+                        <li><a href="guias.html">Guías Completas</a></li>
                     </ul>
                 </div>
 
@@ -453,5 +515,45 @@
 
     <!-- ===== SCRIPTS ===== -->
     <script src="js/script.js"></script>
+    <script>
+        // Función para scroll suave a las secciones
+        function scrollToGuide(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Highlight del botón activo
+        const guideButtons = document.querySelectorAll('.guia-btn');
+        guideButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                guideButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Observador para cambiar botón activo al scroll
+        const sections = document.querySelectorAll('.categoria-guia');
+        const options = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    guideButtons.forEach(btn => btn.classList.remove('active'));
+                    const correspondingButton = document.querySelector(`[onclick="scrollToGuide('${entry.target.id}')"]`);
+                    if (correspondingButton) {
+                        correspondingButton.classList.add('active');
+                    }
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
