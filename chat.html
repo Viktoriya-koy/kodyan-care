@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de Apoyo | Kodyan Care</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .chat-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: var(--color-surface);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .mensajes {
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--color-secondary);
+            border-radius: 10px;
+        }
+
+        .mensaje {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .mensaje.kody {
+            background: var(--color-primary);
+            color: white;
+            margin-right: auto;
+        }
+
+        .mensaje.usuario {
+            background: var(--color-text-light);
+            color: white;
+            margin-left: auto;
+        }
+
+        .input-chat {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-chat input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid var(--color-primary);
+            border-radius: 8px;
+        }
+
+        .input-chat button {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../resources/pulpo-logo.png" alt="Kodyan Care" class="logo-pulpo">
+                Kodyan Care
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html#herramientas">Volver a Herramientas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="herramienta-detalle">
+        <div class="container">
+            <h1>🤖 Chat de Apoyo</h1>
+            <p class="subtitulo">Kody está aquí para hacerte compañía y guiarte en momentos difíciles</p>
+
+            <div class="chat-container">
+                <div class="mensajes" id="mensajes">
+                    <div class="mensaje kody">
+                        Hola 💙 Soy Kody. ¿Cómo estás hoy? Puedo ayudarte con técnicas de grounding o simplemente escucharte.
+                    </div>
+                </div>
+
+                <div class="input-chat">
+                    <input type="text" id="input-mensaje" placeholder="Escribe tu mensaje...">
+                    <button onclick="enviarMensaje()">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function enviarMensaje() {
+            const input = document.getElementById('input-mensaje');
+            const mensajes = document.getElementById('mensajes');
+            
+            if (input.value.trim() === '') return;
+
+            // Mensaje del usuario
+            const userMsg = document.createElement('div');
+            userMsg.className = 'mensaje usuario';
+            userMsg.textContent = input.value;
+            mensajes.appendChild(userMsg);
+
+            // Respuesta automática de Kody
+            setTimeout(() => {
+                const kodyMsg = document.createElement('div');
+                kodyMsg.className = 'mensaje kody';
+                kodyMsg.textContent = "Te entiendo. ¿Querés que hagamos juntos una técnica de respiración o grounding?";
+                mensajes.appendChild(kodyMsg);
+                mensajes.scrollTop = mensajes.scrollHeight;
+            }, 1000);
+
+            input.value = '';
+            mensajes.scrollTop = mensajes.scrollHeight;
+        }
+    </script>
+</body>
+</html>

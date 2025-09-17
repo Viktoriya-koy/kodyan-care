@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descarga Emocional | Kodyan Care</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Estilos específicos para la descarga */
+        .descarga-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--color-surface);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            border: 2px solid var(--color-primary);
+            border-radius: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-destruir {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-destruir:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Efecto de desvanecimiento */
+        .fade-out {
+            animation: fadeOut 2s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
+
+        /* Mensaje de confirmación */
+        .mensaje-exito {
+            text-align: center;
+            color: var(--color-primary);
+            font-weight: bold;
+            margin-top: 2rem;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .mostrar {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Mismo header que index.html -->
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <img src="../resources/pulpo-logo.png" alt="Kodyan Care" class="logo-pulpo">
+                Kodyan Care
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html#herramientas">Volver a Herramientas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="herramienta-detalle">
+        <div class="container">
+            <h1>📝 Descarga Emocional</h1>
+            <p class="subtitulo">Escribí lo que sientas. Todo se autodestruirá en 24 horas. Sin juicios, solo liberación.</p>
+
+            <div class="descarga-container">
+                <textarea id="texto-descarga" placeholder="Escribí aquí todo lo que necesites sacar... lo que sea. Nadie lo va a leer. Solo existirá por unos segundos."></textarea>
+                <button class="btn-destruir" onclick="destruirTexto()">🔥 DESTRUIR TEXTOS</button>
+                <p class="mensaje-exito" id="mensaje-exito">💨 Tu carga emocional se ha disipado. Respirá profundo.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Mismo footer que index.html -->
+    </footer>
+
+    <script>
+        function destruirTexto() {
+            const textoArea = document.getElementById('texto-descarga');
+            const boton = document.querySelector('.btn-destruir');
+            const mensajeExito = document.getElementById('mensaje-exito');
+
+            // 1. Aplicar efecto de desvanecimiento al textarea
+            textoArea.classList.add('fade-out');
+            boton.classList.add('fade-out');
+
+            // 2. Esperar a que termine la animación y luego borrar
+            setTimeout(() => {
+                textoArea.value = ''; // Borrar el texto
+                textoArea.style.display = 'none';
+                boton.style.display = 'none';
+
+                // 3. Mostrar mensaje de éxito
+                mensajeExito.classList.add('mostrar');
+            }, 2000); // Espera 2 segundos (duración de la animación)
+        }
+    </script>
+</body>
+</html>
