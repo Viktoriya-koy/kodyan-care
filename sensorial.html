@@ -4,52 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Herramientas Sensoriales | Kodyan Care</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <style>
+        /* ESTILOS SENSORIALES */
+        .herramienta-detalle {
+            padding: 8rem 0 4rem;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e6f7ff 0%, #f0f9ff 100%);
+        }
+
         .sensorial-container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 2rem auto;
-            padding: 2rem;
+            padding: 1rem;
         }
 
         .herramienta {
             background: var(--color-surface);
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
             text-align: center;
         }
 
         .herramienta h2 {
             color: var(--color-text);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-size: 1.8rem;
         }
 
-        /* PELOTA DE RESPIRACIÓN */
-        .pelota-respiracion {
+        /* PULPO DE RESPIRACIÓN */
+        .pulpo-respiracion {
             width: 200px;
             height: 200px;
-            background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
-            border-radius: 50%;
             margin: 0 auto;
             cursor: pointer;
             transition: all 1.5s ease-in-out;
+            position: relative;
+        }
+
+        .pulpo-cuerpo {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
+            transition: all 1.5s ease-in-out;
         }
 
-        .pelota-respiracion.inflar {
-            transform: scale(1.5);
+        .pulpo-tentaculos {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .tentaculo {
+            width: 8px;
+            height: 30px;
+            background: var(--color-primary-dark);
+            border-radius: 4px;
+            transition: all 1.5s ease-in-out;
+        }
+
+        .pulpo-respiracion.inflar {
+            transform: scale(1.2);
+        }
+
+        .pulpo-respiracion.inflar .pulpo-cuerpo {
             background: linear-gradient(45deg, var(--color-accent), var(--color-primary));
         }
 
+        .pulpo-respiracion.inflar .tentaculo {
+            height: 40px;
+        }
+
         /* BURBUJAS FLOTANTES */
-        .burbujas {
+        .burbujas-container {
             position: relative;
             height: 200px;
             margin: 2rem 0;
@@ -68,29 +108,8 @@
             50% { transform: translateY(-100px) scale(1.2); opacity: 0.8; }
         }
 
-        /* GATITOS MÓVILES */
-        .gatitos {
-            display: flex;
-            justify-content: space-around;
-            margin: 2rem 0;
-        }
-
-        .gatito {
-            width: 80px;
-            height: 80px;
-            background-image: url('../resources/gatito.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .gatito:hover {
-            transform: translateY(-10px) rotate(5deg);
-        }
-
         /* TEXTURAS VISUALES */
-        .texturas {
+        .texturas-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
@@ -99,9 +118,10 @@
 
         .textura {
             height: 100px;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            background-size: cover;
         }
 
         .textura:hover {
@@ -111,151 +131,289 @@
         .textura-1 { background: linear-gradient(45deg, #6D67E4, #453F90); }
         .textura-2 { background: radial-gradient(circle, #F2F7FF, #6D67E4); }
         .textura-3 { background: repeating-linear-gradient(45deg, #4ECDC4, #4ECDC4 10px, #F2F7FF 10px, #F2F7FF 20px); }
-        .textura-4 { background: url('../resources/textura-marmol.jpg'); background-size: cover; }
-        .textura-5 { background: url('../resources/textura-liquida.jpg'); background-size: cover; }
-        .textura-6 { background: url('../resources/textura-nebula.jpg'); background-size: cover; }
 
-        /* INSTRUCCIONES */
-        .instrucciones {
+        /* ANIMALITOS */
+        .animalitos-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .animalito {
+            width: 80px;
+            height: 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .animalito:hover {
+            transform: translateY(-5px);
+            opacity: 1;
+        }
+
+        /* CONTROLES */
+        .controles {
             background: var(--color-secondary);
             padding: 1.5rem;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-top: 2rem;
-            text-align: left;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+
+        .control-group label {
+            font-weight: 500;
+            color: var(--color-text);
+            min-width: 80px;
+        }
+
+        input[type="range"] {
+            width: 200px;
+        }
+
+        .btn-control {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .texturas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .animalitos-container {
+                justify-content: center;
+            }
+            
+            .control-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            input[type="range"] {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- ===== HEADER ===== -->
     <header>
         <div class="container header-container">
-            <a href="../index.html" class="logo">
-                <img src="../resources/pulpo-logo.png" alt="Kodyan Care" class="logo-pulpo">
+            <a href="index.html" class="logo">
+                <img src="resources/pulpo-logo.png" alt="Kodyan Care" class="logo-pulpo">
                 Kodyan Care
             </a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="../index.html#herramientas">Volver a Herramientas</a></li>
+                    <li><a href="index.html#herramientas">Herramientas</a></li>
+                    <li><a href="index.html#regulacion">Regulación</a></li>
+                    <li><a href="emergencias.html" class="btn-emergencia">🚨 Emergencia</a></li>
                 </ul>
             </nav>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
-    <section class="herramienta-detalle">
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <main class="herramienta-detalle">
         <div class="container">
             <h1>🎨 Herramientas Sensoriales</h1>
-            <p class="subtitulo">Recursos visuales y táctiles para regular ansiedad y sobrecarga sensorial</p>
+            <p class="subtitulo">Recursos visuales para regular ansiedad y sobrecarga sensorial</p>
 
             <div class="sensorial-container">
-                <!-- PELOTA DE RESPIRACIÓN -->
+                <!-- PULPO DE RESPIRACIÓN -->
                 <div class="herramienta">
-                    <h2>🌬️ Pelota de Respiración</h2>
-                    <div class="pelota-respiracion" id="pelota" onclick="toggleRespirar()">
-                        Click para respirar
+                    <h2>🐙 Pulpo de Respiración</h2>
+                    <div class="pulpo-respiracion" id="pulpo" onclick="toggleRespirar()">
+                        <div class="pulpo-cuerpo">
+                            Click para respirar
+                        </div>
+                        <div class="pulpo-tentaculos">
+                            <div class="tentaculo"></div>
+                            <div class="tentaculo"></div>
+                            <div class="tentaculo"></div>
+                            <div class="tentaculo"></div>
+                        </div>
                     </div>
-                    <p>Inflá la pelota al inhalar, desinflá al exhalar. Sincronizá tu respiración con el movimiento.</p>
+                    <p>Inflá al inhalar, desinflá al exhalar. Sincronizá tu respiración con el movimiento.</p>
+                    
+                    <div class="controles">
+                        <div class="control-group">
+                            <label>Velocidad:</label>
+                            <input type="range" min="1" max="10" value="5" id="velocidad-pulpo">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- BURBUJAS FLOTANTES -->
                 <div class="herramienta">
                     <h2>🫧 Burbujas Flotantes</h2>
-                    <div class="burbujas" id="burbujas">
-                        <!-- Las burbujas se generan con JS -->
+                    <div class="burbujas-container" id="burbujas">
+                        <!-- JS generará las burbujas -->
                     </div>
-                    <p>Seguí el movimiento de las burbujas con la vista. Ayuda a calmar la mente y reducir la ansiedad.</p>
-                </div>
-
-                <!-- GATITOS MÓVILES -->
-                <div class="herramienta">
-                    <h2>🐱 Gatitos Calmantes</h2>
-                    <div class="gatitos">
-                        <div class="gatito" onmouseover="moverGatito(this)"></div>
-                        <div class="gatito" onmouseover="moverGatito(this)"></div>
-                        <div class="gatito" onmouseover="moverGatito(this)"></div>
+                    <p>Seguí el movimiento de las burbujas con la vista. Ayuda a calmar la mente.</p>
+                    
+                    <div class="controles">
+                        <div class="control-group">
+                            <label>Cantidad:</label>
+                            <input type="range" min="5" max="30" value="15" id="cantidad-burbujas">
+                        </div>
+                        <button class="btn-control" onclick="crearBurbujas()">Generar</button>
                     </div>
-                    <p>Pasá el mouse sobre los gatitos para verlos moverse. Simple y reconfortante.</p>
                 </div>
 
                 <!-- TEXTURAS VISUALES -->
                 <div class="herramienta">
                     <h2>🌈 Texturas Visuales</h2>
-                    <div class="texturas">
-                        <div class="textura textura-1"></div>
-                        <div class="textura textura-2"></div>
-                        <div class="textura textura-3"></div>
-                        <div class="textura textura-4"></div>
-                        <div class="textura textura-5"></div>
-                        <div class="textura textura-6"></div>
+                    <div class="texturas-grid">
+                        <div class="textura textura-1" onclick="cambiarFondo('textura-1')"></div>
+                        <div class="textura textura-2" onclick="cambiarFondo('textura-2')"></div>
+                        <div class="textura textura-3" onclick="cambiarFondo('textura-3')"></div>
                     </div>
-                    <p>Observá las texturas. ¿Alguna te transmite calma? Enfocate en ella por unos momentos.</p>
+                    <p>Observá las texturas. ¿Alguna te transmite calma? Enfocate en ella.</p>
                 </div>
 
-                <div class="instrucciones">
-                    <h3>💡 Cómo usar estas herramientas:</h3>
-                    <p>Estos recursos están diseñados para <strong>ayudarte a groundear</strong> cuando sentís:</p>
-                    <ul>
-                        <li>Sobrecarga sensorial</li>
-                        <li>Ansiedad elevada</li>
-                        <li>Disociación o desconexión del cuerpo</li>
-                        <li>Necesidad de estimulación visual calmante</li>
-                    </ul>
-                    <p>Probá diferentes herramientas y quedate con las que te hagan sentir mejor.</p>
+                <!-- ANIMALITOS CALMANTES -->
+                <div class="herramienta">
+                    <h2>🐱 Animalitos Calmantes</h2>
+                    <div class="animalitos-container">
+                        <div class="animalito" style="background-image: url('resources/gato.png')" onmouseover="moverAnimalito(this)"></div>
+                        <div class="animalito" style="background-image: url('resources/pez.png')" onmouseover="moverAnimalito(this)"></div>
+                        <div class="animalito" style="background-image: url('resources/pajaro.png')" onmouseover="moverAnimalito(this)"></div>
+                    </div>
+                    <p>Pasá el mouse sobre los animalitos para verlos moverse. Simple y reconfortante.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <!-- Mismo footer que index.html -->
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Kodyan Care</a>
+                    <p>Tu puerto seguro para tormentas emocionales.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Herramientas</h4>
+                    <ul>
+                        <li><a href="anclaje.html">Técnicas de Anclaje</a></li>
+                        <li><a href="descarga.html">Descarga Rápida</a></li>
+                        <li><a href="audio.html">Espacio Seguro</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="emergencias.html">Líneas de Crisis</a></li>
+                        <li><a href="guias.html">Guías Rápidas</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:care@koyhq.com">care@koyhq.com</a></li>
+                        <li><a href="https://instagram.com/kodyan.care" target="_blank">Instagram</a></li>
+                        <li><a href="https://koyhq.com" target="_blank">Koy HQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p><strong>💡 Importante:</strong> Esto no es un substituto de terapia profesional.</p>
+                <p>&copy; 2025 Kodyan Care. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
+    <script src="js/script.js"></script>
     <script>
-        // PELOTA DE RESPIRACIÓN
+        // PULPO DE RESPIRACIÓN
         function toggleRespirar() {
-            const pelota = document.getElementById('pelota');
-            pelota.classList.toggle('inflar');
+            const pulpo = document.getElementById('pulpo');
+            const velocidad = document.getElementById('velocidad-pulpo').value;
+            const duracion = (11 - velocidad) * 1000; // Invertir valor (mayor velocidad = menor duración)
             
-            if (pelota.classList.contains('inflar')) {
-                pelota.textContent = "Inhalar...";
+            pulpo.classList.toggle('inflar');
+            
+            if (pulpo.classList.contains('inflar')) {
+                pulpo.querySelector('.pulpo-cuerpo').textContent = "Inhalar...";
                 setTimeout(() => {
-                    pelota.textContent = "Exhalar...";
+                    pulpo.querySelector('.pulpo-cuerpo').textContent = "Exhalar...";
                     setTimeout(() => {
-                        pelota.classList.remove('inflar');
-                        pelota.textContent = "Click para respirar";
-                    }, 4000);
-                }, 4000);
+                        pulpo.classList.remove('inflar');
+                        pulpo.querySelector('.pulpo-cuerpo').textContent = "Click para respirar";
+                    }, duracion);
+                }, duracion);
             }
         }
 
         // BURBUJAS FLOTANTES
         function crearBurbujas() {
             const contenedor = document.getElementById('burbujas');
+            const cantidad = document.getElementById('cantidad-burbujas').value;
+            
             contenedor.innerHTML = '';
             
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < cantidad; i++) {
                 const burbuja = document.createElement('div');
                 burbuja.className = 'burbuja';
-                burbuja.style.width = (20 + Math.random() * 30) + 'px';
+                burbuja.style.width = (15 + Math.random() * 25) + 'px';
                 burbuja.style.height = burbuja.style.width;
                 burbuja.style.left = Math.random() * 100 + '%';
                 burbuja.style.animationDelay = (Math.random() * 5) + 's';
                 burbuja.style.animationDuration = (3 + Math.random() * 4) + 's';
+                burbuja.style.background = `rgba(109, 103, 228, ${0.3 + Math.random() * 0.4})`;
                 contenedor.appendChild(burbuja);
             }
         }
 
-        // GATITOS MÓVILES
-        function moverGatito(gatito) {
-            gatito.style.transform = 'translateY(-15px) rotate(8deg)';
+        // ANIMALITOS
+        function moverAnimalito(animalito) {
+            animalito.style.transform = 'translateY(-10px)';
             setTimeout(() => {
-                gatito.style.transform = 'none';
+                animalito.style.transform = 'none';
             }, 1000);
         }
 
-        // Inicializar
-        window.onload = function() {
-            crearBurbujas();
-            setInterval(crearBurbujas, 10000); // Recrear burbujas cada 10 segundos
+        // TEXTURAS
+        function cambiarFondo(tipo) {
+            document.body.style.background = window.getComputedStyle(document.querySelector(`.${tipo}`)).backgroundImage;
+            setTimeout(() => {
+                document.body.style.background = '';
+            }, 3000);
         }
+
+        // Inicializar
+        window.addEventListener('load', function() {
+            crearBurbujas();
+            setInterval(crearBurbujas, 15000);
+        });
     </script>
 </body>
 </html>
