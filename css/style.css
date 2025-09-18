@@ -342,9 +342,23 @@ section {
 
 .regulacion-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);  /* ← CAMBIAR ESTA LÍNEA */
     gap: 2.5rem;
     margin-top: 4rem;
+}
+/* Tablet: 2 columnas */
+@media (max-width: 1024px) {
+    .regulacion-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile: 1 columna */
+@media (max-width: 768px) {
+    .regulacion-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 .regulacion-item {
@@ -776,4 +790,5 @@ img[src*="null"] {
     background: var(--color-emergency-light) !important;
     padding: 1rem;
 }
+
 
