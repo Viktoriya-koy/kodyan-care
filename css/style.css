@@ -1,11 +1,11 @@
 /* ===== VARIABLES Y RESET ===== */
-:root {
+::root {
     /* Paleta calmante Kodyan Care - Mejorada */
     --color-primary: #6D67E4;         /* Lila principal */
     --color-primary-light: #8A85FF;   /* Lila claro */
     --color-primary-dark: #564FCC;    /* Lila oscuro */
-    --color-secondary: #F2F7FF;       /* Blanco azulado */
     --color-accent: #453F90;          /* Lila oscuro profundo */
+    --color-secondary: #F2F7FF;       /* Blanco azulado */
     --color-background: #E6F7FF;      /* Fondo azul claro */
     --color-surface: #FFFFFF;         /* Superficies blancas */
     
@@ -26,6 +26,51 @@
     --transition: all 0.3s ease;
 }
 
+/* ===== MODO OSCURO AUTOMÁTICO (prefers-color-scheme) ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: #0A0A1A;      /* Fondo azul muy oscuro */
+        --color-surface: #1A1A2A;         /* Superficies azul oscuro */
+        --color-secondary: #1E2A3A;       /* Secondary azul noche */
+        --color-text: #E6F7FF;            /* Texto blanco azulado */
+        --color-text-light: #8A9BA8;      /* Texto secundario gris azulado */
+        --color-emergency-light: #2A1A1A; /* Fondo emergencia oscuro */
+        --color-guide-light: #1A2A2A;     /* Fondo guías oscuro */
+        
+        /* Sombras más pronunciadas para oscuro */
+        --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ===== CLASES MANUALES PARA TEMAS ===== */
+.tema-oscuro {
+    --color-background: #0A0A1A;
+    --color-surface: #1A1A2A;
+    --color-secondary: #1E2A3A;
+    --color-text: #E6F7FF;
+    --color-text-light: #8A9BA8;
+    --color-emergency-light: #2A1A1A;
+    --color-guide-light: #1A2A2A;
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.tema-claro {
+    --color-background: #E6F7FF;
+    --color-surface: #FFFFFF;
+    --color-secondary: #F2F7FF;
+    --color-text: #003B46;
+    --color-text-light: #5B7E87;
+    --color-emergency-light: #FFE5E5;
+    --color-guide-light: #E0F7F5;
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.15);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -43,6 +88,60 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
+
+/* ===== BOTÓN DE CAMBIO DE TEMA ===== */
+.tema-switch {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+#btn-tema {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+#btn-tema:hover {
+    transform: scale(1.1) rotate(30deg);
+}
+
+/* ===== AJUSTES ESPECÍFICOS PARA MODO OSCURO ===== */
+@media (prefers-color-scheme: dark) {
+    .hero {
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(109, 103, 228, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(69, 63, 144, 0.12) 0%, transparent 45%);
+    }
+    
+    .care-line {
+        background: linear-gradient(90deg, transparent, var(--color-primary-light), transparent);
+        opacity: 0.1;
+    }
+}
+
+.tema-oscuro .hero {
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(109, 103, 228, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(69, 63, 144, 0.12) 0%, transparent 45%);
+}
+
+.tema-oscuro .care-line {
+    background: linear-gradient(90deg, transparent, var(--color-primary-light), transparent);
+    opacity: 0.1;
+}
+
 
 .container {
     max-width: 1200px;
@@ -790,5 +889,6 @@ img[src*="null"] {
     background: var(--color-emergency-light) !important;
     padding: 1rem;
 }
+
 
 
