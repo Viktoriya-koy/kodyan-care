@@ -212,57 +212,6 @@ if (document.readyState === 'loading') {
 } else {
     initKodyanCare();
 }
-// ===== SISTEMA DE TEMAS =====
-function inicializarTema() {
-    // Crear botón si no existe
-    if (!document.getElementById('btn-tema')) {
-        const btnTema = document.createElement('button');
-        btnTema.id = 'btn-tema';
-        btnTema.setAttribute('aria-label', 'Cambiar tema');
-        btnTema.innerHTML = '<i class="fas fa-moon"></i>';
-        
-        const contenedorTema = document.createElement('div');
-        contenedorTema.className = 'tema-switch';
-        contenedorTema.appendChild(btnTema);
-        
-        document.body.appendChild(contenedorTema);
-    }
-    
-    const btnTema = document.getElementById('btn-tema');
-    const iconoTema = btnTema.querySelector('i');
-    
-    // Cargar preferencia guardada
-    const temaGuardado = localStorage.getItem('tema-kodyan');
-    const prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    // Aplicar tema inicial
-    if (temaGuardado === 'oscuro' || (!temaGuardado && prefiereOscuro)) {
-        document.documentElement.classList.add('tema-oscuro');
-        iconoTema.className = 'fas fa-sun';
-    } else {
-        document.documentElement.classList.add('tema-claro');
-        iconoTema.className = 'fas fa-moon';
-    }
-    
-    // Event listener para el botón
-    btnTema.addEventListener('click', () => {
-        const tieneOscuro = document.documentElement.classList.contains('tema-oscuro');
-        
-        if (tieneOscuro) {
-            // Cambiar a claro
-            document.documentElement.classList.remove('tema-oscuro');
-            document.documentElement.classList.add('tema-claro');
-            iconoTema.className = 'fas fa-moon';
-            localStorage.setItem('tema-kodyan', 'claro');
-        } else {
-            // Cambiar a oscuro
-            document.documentElement.classList.remove('tema-claro');
-            document.documentElement.classList.add('tema-oscuro');
-            iconoTema.className = 'fas fa-sun';
-            localStorage.setItem('tema-kodyan', 'oscuro');
-        }
-    });
-}
 
 // Inicializar cuando cargue la página
 document.addEventListener('DOMContentLoaded', inicializarTema);
