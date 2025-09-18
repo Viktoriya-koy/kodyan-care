@@ -831,6 +831,21 @@ img[src*="null"] {
         color: var(--color-text-light) !important;
     }
 }
+/* Fix para header mobile que tapa contenido */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px; /* Espacio para el header fijo */
+    }
+    
+    .herramienta-detalle {
+        padding: 2rem 0 4rem; /* Reduce padding superior */
+    }
+    
+    /* Asegura que los anclajes no queden detrás del header */
+    section[id] {
+        scroll-margin-top: 80px;
+    }
+}
 
 
 
