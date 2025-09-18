@@ -905,5 +905,50 @@ img[src*="null"] {
         scroll-margin-top: 80px;
     }
 }
+/* ===== FIXES PARA MODO OSCURO ===== */
+@media (prefers-color-scheme: dark) {
+    .tool-item,
+    .guia-card,
+    .regulacion-item,
+    .descarga-container,
+    .chat-container,
+    .controls,
+    .pasos,
+    .que-decir,
+    .tip,
+    .alerta {
+        background: var(--color-surface) !important;
+        color: var(--color-text) !important;
+        border-color: var(--color-primary-light) !important;
+    }
+    
+    /* Textos específicos */
+    .tool-item p,
+    .guia-card p,
+    .regulacion-item p {
+        color: var(--color-text-light) !important;
+    }
+}
+
+.tema-oscuro .tool-item,
+.tema-oscuro .guia-card,
+.tema-oscuro .regulacion-item,
+.tema-oscuro .descarga-container,
+.tema-oscuro .chat-container,
+.tema-oscuro .controls,
+.tema-oscuro .pasos,
+.tema-oscuro .que-decir,
+.tema-oscuro .tip,
+.tema-oscuro .alerta {
+    background: var(--color-surface) !important;
+    color: var(--color-text) !important;
+    border-color: var(--color-primary-light) !important;
+}
+
+.tema-oscuro .tool-item p,
+.tema-oscuro .guia-card p,
+.tema-oscuro .regulacion-item p {
+    color: var(--color-text-light) !important;
+}
 
 
