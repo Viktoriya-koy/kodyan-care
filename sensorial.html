@@ -178,92 +178,109 @@
             pointer-events: none;
         }
 
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
+        /* RESPIRACIÓN GUIADA */
+        .breathing-guide-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
 
-        /* PELOTA DE RESPIRACIÓN MEJORADA */
-        .breathing-ball {
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, var(--sensory-primary), var(--sensory-dark));
+        .breathing-circle {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            margin: 100px auto;
-            transition: all 4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, var(--sensory-primary), var(--sensory-accent));
+            margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
+            font-size: 1.2rem;
             cursor: pointer;
+            transition: all 4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 30px rgba(109, 103, 228, 0.3);
         }
 
-        .breathing-ball.inhale {
+        .breathing-circle.breathing-in {
             transform: scale(1.8);
-            background: linear-gradient(135deg, var(--sensory-accent), var(--sensory-primary));
-            box-shadow: 0 15px 40px rgba(78, 205, 196, 0.4);
+            background: linear-gradient(135deg, var(--sensory-accent), #4ECDC4);
         }
 
-        /* LÍQUIDO EN MOVIMIENTO MEJORADO */
-        .liquid-container {
-            width: 100%;
-            height: 300px;
+        .breathing-timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .timer-phase {
+            padding: 0.5rem 1rem;
+            background: var(--color-secondary);
+            border-radius: 20px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .timer-phase.active {
+            background: var(--sensory-primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* PUNTO FOCAL */
+        .focus-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .focus-dot {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--sensory-primary);
+            margin: 0 auto;
+            box-shadow: 
+                0 0 0 0 rgba(109, 103, 228, 1),
+                0 0 0 0 rgba(109, 103, 228, 0.7);
+        }
+
+        .focus-instruction {
+            text-align: center;
+            color: var(--color-text-light);
+            font-style: italic;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* ONDAS DE RESPIRACIÓN */
+        .waves-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .wave-container {
             position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-
-        .liquid {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60%;
-            background: linear-gradient(to top, var(--sensory-primary), transparent);
-            opacity: 0.7;
-            border-radius: 50% 50% 0 0;
-        }
-
-        /* MANDALAS MEJORADOS */
-        .mandala {
             width: 300px;
             height: 300px;
-            margin: 50px auto;
-            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .mandala path {
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.5;
-        }
-
-        /* NUEVO: PARTÍCULAS FLOTANTES */
-        .floating-particles {
+        .wave {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        /* NUEVO: ESTRELLAS CENTELLEANTES */
-        .twinkling-stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            background: white;
+            width: 100px;
+            height: 100px;
+            border: 3px solid var(--sensory-primary);
             border-radius: 50%;
             opacity: 0;
         }
@@ -292,10 +309,19 @@
                 font-size: 0.9rem;
             }
             
-            .breathing-ball {
-                width: 120px;
-                height: 120px;
-                margin: 80px auto;
+            .breathing-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .breathing-timer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .focus-dot {
+                width: 80px;
+                height: 80px;
             }
         }
     </style>
@@ -334,54 +360,64 @@
             <p class="subtitulo">Estímulos visuales controlados para regular tu sistema nervioso. Tú tienes el control.</p>
 
             <div class="sensory-container">
-                <!-- SELECTOR DE HERRAMIENTAS -->
+                <!-- SELECTOR DE HERRAMIENTAS MEJORADO -->
                 <div class="tool-selector">
                     <div class="tool-option active" data-tool="bubbles" onclick="selectTool('bubbles')">
                         <div class="tool-icon">🫧</div>
                         <h3>Burbujas Flotantes</h3>
-                        <p>Burbujas suaves con movimiento natural</p>
+                        <p>Seguimiento visual calmante</p>
                     </div>
                     
                     <div class="tool-option" data-tool="breathing" onclick="selectTool('breathing')">
                         <div class="tool-icon">🌬️</div>
-                        <h3>Pelota de Respiración</h3>
-                        <p>Respiración consciente guiada visualmente</p>
+                        <h3>Respiración Guiada</h3>
+                        <p>Inhalar y exhalar con visualización</p>
                     </div>
                     
-                    <div class="tool-option" data-tool="liquid" onclick="selectTool('liquid')">
+                    <div class="tool-option" data-tool="focus" onclick="selectTool('focus')">
+                        <div class="tool-icon">🎯</div>
+                        <h3>Punto Focal</h3>
+                        <p>Ancla visual para evitar disociación</p>
+                    </div>
+                    
+                    <div class="tool-option" data-tool="waves" onclick="selectTool('waves')">
                         <div class="tool-icon">🌊</div>
-                        <h3>Líquido en Movimiento</h3>
-                        <p>Ondas suaves para hipnosis visual</p>
-                    </div>
-                    
-                    <div class="tool-option" data-tool="particles" onclick="selectTool('particles')">
-                        <div class="tool-icon">✨</div>
-                        <h3>Partículas Flotantes</h3>
-                        <p>Partículas suaves en movimiento libre</p>
+                        <h3>Ondas de Respiración</h3>
+                        <p>Ritmo respiratorio visualizado</p>
                     </div>
                 </div>
 
-                <!-- ÁREA DE VISUALIZACIÓN -->
+                <!-- ÁREA DE VISUALIZACIÓN ACTUALIZADA -->
                 <div class="visualization-area" id="visualization-area">
+                    <!-- BURBUJAS -->
                     <div id="bubbles-container"></div>
-                    <div id="particles-container" class="floating-particles"></div>
-                    <div id="stars-container" class="twinkling-stars"></div>
                     
-                    <div class="breathing-ball" id="breathing-ball" onclick="toggleBreathing()">
-                        <span id="breathing-text">Click para respirar</span>
+                    <!-- RESPIRACIÓN GUIADA -->
+                    <div id="breathing-guide" class="breathing-guide-container" style="display: none;">
+                        <div class="breathing-circle" id="breathing-circle">
+                            <span id="breathing-text">Click para comenzar</span>
+                        </div>
+                        <div class="breathing-timer">
+                            <div class="timer-phase" id="inhale-timer">Inhalar: 4s</div>
+                            <div class="timer-phase" id="hold-timer">Mantener: 4s</div>
+                            <div class="timer-phase" id="exhale-timer">Exhalar: 6s</div>
+                        </div>
                     </div>
                     
-                    <div class="liquid-container" id="liquid-container" style="display: none;">
-                        <div class="liquid" id="liquid"></div>
+                    <!-- PUNTO FOCAL -->
+                    <div id="focus-point" class="focus-container" style="display: none;">
+                        <div class="focus-dot" id="focus-dot"></div>
+                        <div class="focus-instruction">Mira el punto... solo el punto...</div>
                     </div>
                     
-                    <div class="mandala" id="mandala" style="display: none;">
-                        <svg viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                            <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <path d="M20,50 Q50,20 80,50 Q50,80 20,50" fill="none" stroke="currentColor" stroke-width="1"/>
-                        </svg>
+                    <!-- ONDAS DE RESPIRACIÓN -->
+                    <div id="breathing-waves" class="waves-container" style="display: none;">
+                        <div class="wave-container">
+                            <div class="wave" id="wave-1"></div>
+                            <div class="wave" id="wave-2"></div>
+                            <div class="wave" id="wave-3"></div>
+                        </div>
+                        <div class="focus-instruction">Sigue el ritmo de las ondas...</div>
                     </div>
                 </div>
 
@@ -399,11 +435,6 @@
                             <input type="range" id="amount-slider" min="1" max="20" value="10" oninput="updateAmount(this.value)">
                             <span id="amount-value">10</span>
                         </div>
-                        <div class="slider-container">
-                            <label>Suavidad:</label>
-                            <input type="range" id="smoothness-slider" min="1" max="10" value="7" oninput="updateSmoothness(this.value)">
-                            <span id="smoothness-value">7</span>
-                        </div>
                     </div>
 
                     <div class="control-group">
@@ -414,7 +445,6 @@
                             <div class="color-option" style="background: #453F90;" onclick="changeColor('#453F90')"></div>
                             <div class="color-option" style="background: #8A85FF;" onclick="changeColor('#8A85FF')"></div>
                             <div class="color-option" style="background: #FF6B6B;" onclick="changeColor('#FF6B6B')"></div>
-                            <div class="color-option" style="background: #FFD166;" onclick="changeColor('#FFD166')"></div>
                         </div>
                     </div>
 
@@ -479,18 +509,17 @@
     </footer>
 
     <!-- ===== SCRIPTS ===== -->
-    <script src="js/script.js"></script>
     <script>
-        // VARIABLES GLOBALES MEJORADAS
+        // VARIABLES GLOBALES
         let currentTool = 'bubbles';
         let currentColor = '#6D67E4';
         let currentSpeed = 5;
         let currentAmount = 10;
-        let currentSmoothness = 7;
         let isPlaying = true;
         let animationInstances = [];
+        let breathingInterval = null;
 
-        // FUNCIONES PRINCIPALES MEJORADAS
+        // FUNCIONES PRINCIPALES
         function selectTool(tool) {
             currentTool = tool;
             
@@ -502,30 +531,30 @@
             
             // Ocultar todas las herramientas
             document.getElementById('bubbles-container').style.display = 'none';
-            document.getElementById('breathing-ball').style.display = 'none';
-            document.getElementById('liquid-container').style.display = 'none';
-            document.getElementById('mandala').style.display = 'none';
-            document.getElementById('particles-container').style.display = 'none';
-            document.getElementById('stars-container').style.display = 'none';
+            document.getElementById('breathing-guide').style.display = 'none';
+            document.getElementById('focus-point').style.display = 'none';
+            document.getElementById('breathing-waves').style.display = 'none';
             
-            // Mostrar herramienta seleccionada
+            // Detener animaciones anteriores
             stopEverything();
             
+            // Mostrar herramienta seleccionada
             switch(tool) {
                 case 'bubbles':
                     document.getElementById('bubbles-container').style.display = 'block';
                     startBubbles();
                     break;
                 case 'breathing':
-                    document.getElementById('breathing-ball').style.display = 'flex';
+                    document.getElementById('breathing-guide').style.display = 'flex';
+                    startBreathingGuide();
                     break;
-                case 'liquid':
-                    document.getElementById('liquid-container').style.display = 'block';
-                    startLiquid();
+                case 'focus':
+                    document.getElementById('focus-point').style.display = 'flex';
+                    startFocusPoint();
                     break;
-                case 'particles':
-                    document.getElementById('particles-container').style.display = 'block';
-                    startParticles();
+                case 'waves':
+                    document.getElementById('breathing-waves').style.display = 'flex';
+                    startBreathingWaves();
                     break;
             }
         }
@@ -575,56 +604,62 @@
             }
         }
 
-        function startParticles() {
-            const container = document.getElementById('particles-container');
-            container.innerHTML = '';
+        function startBreathingGuide() {
+            const circle = document.getElementById('breathing-circle');
+            const text = document.getElementById('breathing-text');
             
-            const particleCount = currentAmount * 2;
-            const duration = 4000 - (currentSpeed * 300);
+            // Resetear estado
+            circle.classList.remove('breathing-in');
+            text.textContent = "Click para comenzar";
+            resetTimerPhases();
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.background = currentColor;
-                particle.style.width = (2 + Math.random() * 4) + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                container.appendChild(particle);
-                
-                const animation = anime({
-                    targets: particle,
-                    translateX: anime.random(-100, 100),
-                    translateY: anime.random(-80, 80),
-                    opacity: [
-                        {value: 0, duration: 0},
-                        {value: anime.random(0.3, 0.8), duration: 1000},
-                        {value: 0, duration: 1000}
-                    ],
-                    duration: duration,
-                    delay: Math.random() * 2000,
-                    easing: 'easeInOutSine',
-                    direction: 'alternate',
-                    loop: true,
-                    update: function(anim) {
-                        if (!isPlaying) anim.pause();
-                        else anim.play();
-                    }
-                });
-                
-                animationInstances.push(animation);
-            }
+            circle.onclick = function() {
+                if (!circle.classList.contains('breathing-in')) {
+                    // FASE INHALAR
+                    circle.classList.add('breathing-in');
+                    text.textContent = "Inhalar...";
+                    activateTimerPhase('inhale-timer');
+                    
+                    anime({
+                        targets: circle,
+                        scale: 1.8,
+                        duration: 4000,
+                        easing: 'easeInOutSine',
+                        complete: function() {
+                            // FASE MANTENER
+                            text.textContent = "Mantener...";
+                            activateTimerPhase('hold-timer');
+                            
+                            setTimeout(() => {
+                                // FASE EXHALAR
+                                text.textContent = "Exhalar...";
+                                activateTimerPhase('exhale-timer');
+                                
+                                anime({
+                                    targets: circle,
+                                    scale: 1,
+                                    duration: 6000,
+                                    easing: 'easeInOutSine',
+                                    complete: function() {
+                                        circle.classList.remove('breathing-in');
+                                        text.textContent = "Click para respirar";
+                                        resetTimerPhases();
+                                    }
+                                });
+                            }, 4000);
+                        }
+                    });
+                }
+            };
         }
 
-        function startLiquid() {
-            const liquid = document.getElementById('liquid');
-            liquid.style.background = `linear-gradient(to top, ${currentColor}, transparent)`;
+        function startFocusPoint() {
+            const dot = document.getElementById('focus-dot');
             
             const animation = anime({
-                targets: liquid,
-                translateY: [-20, 20],
-                scaleY: [1, 1.3],
-                duration: 6000 - (currentSpeed * 400),
+                targets: dot,
+                scale: [0.9, 1.1],
+                duration: 2000,
                 easing: 'easeInOutSine',
                 direction: 'alternate',
                 loop: true,
@@ -637,36 +672,45 @@
             animationInstances.push(animation);
         }
 
-        function toggleBreathing() {
-            const ball = document.getElementById('breathing-ball');
-            const text = document.getElementById('breathing-text');
+        function startBreathingWaves() {
+            const waves = [
+                document.getElementById('wave-1'),
+                document.getElementById('wave-2'),
+                document.getElementById('wave-3')
+            ];
             
-            if (!ball.classList.contains('inhale')) {
-                // Inhalar
-                ball.classList.add('inhale');
-                text.textContent = "Inhalar...";
+            waves.forEach((wave, index) => {
+                wave.style.borderColor = currentColor;
                 
-                anime({
-                    targets: ball,
-                    scale: 1.8,
+                const animation = anime({
+                    targets: wave,
+                    scale: [0.5, 3],
+                    opacity: [0.7, 0],
                     duration: 4000,
-                    easing: 'easeInOutSine',
-                    complete: function() {
-                        // Exhalar
-                        text.textContent = "Exhalar...";
-                        anime({
-                            targets: ball,
-                            scale: 1,
-                            duration: 4000,
-                            easing: 'easeInOutSine',
-                            complete: function() {
-                                ball.classList.remove('inhale');
-                                text.textContent = "Click para respirar";
-                            }
-                        });
+                    delay: index * 1333, // Para que sea continuo
+                    easing: 'easeOutSine',
+                    loop: true,
+                    update: function(anim) {
+                        if (!isPlaying) anim.pause();
+                        else anim.play();
                     }
                 });
-            }
+                
+                animationInstances.push(animation);
+            });
+        }
+
+        function activateTimerPhase(phaseId) {
+            document.querySelectorAll('.timer-phase').forEach(phase => {
+                phase.classList.remove('active');
+            });
+            document.getElementById(phaseId).classList.add('active');
+        }
+
+        function resetTimerPhases() {
+            document.querySelectorAll('.timer-phase').forEach(phase => {
+                phase.classList.remove('active');
+            });
         }
 
         function stopEverything() {
@@ -678,7 +722,6 @@
             
             // Limpiar contenedores
             document.getElementById('bubbles-container').innerHTML = '';
-            document.getElementById('particles-container').innerHTML = '';
             
             // Reiniciar estados
             isPlaying = true;
@@ -703,7 +746,7 @@
         }
 
         function randomizeEffects() {
-            const colors = ['#6D67E4', '#4ECDC4', '#453F90', '#8A85FF', '#FF6B6B', '#FFD166'];
+            const colors = ['#6D67E4', '#4ECDC4', '#453F90', '#8A85FF', '#FF6B6B'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             const randomSpeed = Math.floor(Math.random() * 10) + 1;
             const randomAmount = Math.floor(Math.random() * 20) + 1;
@@ -728,13 +771,6 @@
             resetTool();
         }
 
-        function updateSmoothness(value) {
-            currentSmoothness = parseInt(value);
-            document.getElementById('smoothness-value').textContent = value;
-            // El smoothness afecta las easing functions
-            resetTool();
-        }
-
         function changeColor(color) {
             currentColor = color;
             document.querySelectorAll('.color-option').forEach(opt => {
@@ -749,15 +785,9 @@
             // Configurar valores iniciales
             document.getElementById('speed-slider').value = currentSpeed;
             document.getElementById('amount-slider').value = currentAmount;
-            document.getElementById('smoothness-slider').value = currentSmoothness;
             
             // Iniciar con burbujas
             selectTool('bubbles');
-        });
-
-        // Manejar redimensionado de ventana
-        window.addEventListener('resize', () => {
-            resetTool();
         });
     </script>
 </body>
