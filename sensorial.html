@@ -225,7 +225,7 @@
             100% { transform: scale(1); }
         }
 
-      /* OBSERVACIÓN PASIVA */
+        /* OBSERVACIÓN PASIVA */
         .teatro-sombras {
             width: 100%;
             height: 150px;
@@ -341,6 +341,7 @@
                             <p>Seguí las burbujas con la vista para calmar la mente y reducir la ansiedad visual.</p>
                             <button class="btn-sensorial" onclick="crearBurbujas()">Crear Burbujas</button>
                             <div class="area-interactiva" id="area-burbujas" style="min-height: 200px; position: relative;">
+                                <p>Hacé clic para crear burbujas flotantes</p>
                             </div>
                         </div>
 
@@ -354,6 +355,7 @@
                                 <div class="respirar-circulo" id="circulo-respirar" onclick="toggleRespiracion()">
                                     Click aquí
                                 </div>
+                                <p>Hacé clic en el círculo para comenzar</p>
                             </div>
                         </div>
 
@@ -369,6 +371,7 @@
                                     <div class="color-option" style="background: #F0F9FF;" onclick="cambiarFondo('#F0F9FF')"></div>
                                     <div class="color-option" style="background: #E0F7F5;" onclick="cambiarFondo('#E0F7F5')"></div>
                                 </div>
+                                <p>Hacé clic en un color para cambiar el fondo temporalmente</p>
                             </div>
                         </div>
                     </div>
@@ -427,40 +430,34 @@
                 <!-- OBSERVACIÓN PASIVA -->
                 <div class="categoria-sensorial">
                     <h2>👁️ Observación Pasiva</h2>
-                    <p>No hay que HACER nada. Solo observar sin participar.</p>
                     
                     <div class="herramientas-grid">
                         <!-- TEATRO DE SOMBRAS -->
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">🎭</span>
                             <h3>Teatro de Sombras</h3>
-                            <p>Figuras abstractas moviéndose. No significan nada. Solo existen.</p>
+                            <p>Figuras abstractas moviéndose. No significan nada. Solo observá sin participar.</p>
                             <button class="btn-sensorial" onclick="iniciarTeatroSombras()">Observar Sombras</button>
                             <div class="area-interactiva">
                                 <div class="teatro-sombras" id="teatro-sombras">
+                                    <p>Hacé clic en el botón para comenzar</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                         <!-- NUBE DE PARTÍCULAS -->
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">🌌</span>
                             <h3>Nube de Partículas</h3>
-                            <p>Partículas flotando según física simulada. Sin patrón, sin propósito.</p>
+                            <p>Partículas flotando según física simulada. Sin patrón, sin propósito. Solo existir.</p>
                             <button class="btn-sensorial" onclick="iniciarNubeParticulas()">Observar Partículas</button>
-                            <p>Paisajes sonoros urbanos y abstractos para diferentes estados de ánimo y necesidades sensoriales.</p>
                             <div class="area-interactiva">
                                 <div class="nube-particulas" id="nube-particulas">
-                                <div class="controles-sonido">
-                                    <button class="sonido-btn" onclick="toggleSonido('white-noise', this)">📺 Ruido Blanco</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('downpour-thunder', this)">⛈️ Tormenta Fuerte</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('rough-ocean', this)">🌊 Mar Agitado</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('string-quartet', this)">🎻 Música Clásica</button>
-                                    <button class="sonido-btn" onclick="detenerSonidos()">⏹️ Parar Todo</button>
+                                    <p>Hacé clic en el botón para comenzar</p>
                                 </div>
                             </div>
                         </div>
-                     </div>   
+
                         <!-- METRÓNOMO VISUAL -->
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">⏱️</span>
@@ -897,8 +894,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
