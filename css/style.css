@@ -148,7 +148,77 @@ header {
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
 }
+/* BOTÓN DE DONACIONES EN NAVBAR */
+.btn-donar {
+    background: linear-gradient(135deg, #FFD166, #FFB347);
+    color: #333 !important;
+    padding: 0.6rem 1.2rem !important;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: none;
+    text-decoration: none;
+}
 
+.btn-donar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 179, 71, 0.3);
+    background: linear-gradient(135deg, #FFB347, #FF9A3C);
+}
+
+/* SECCIÓN DONACIONES EN FOOTER */
+.donaciones-footer {
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem 0;
+    background: rgba(255, 209, 102, 0.1);
+    border-radius: 15px;
+    border: 2px solid #FFD166;
+}
+
+.donaciones-footer h3 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.plataformas-donacion {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.btn-donacion {
+    background: linear-gradient(135deg, #FFD166, #FFB347);
+    color: #333;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-donacion:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 179, 71, 0.3);
+}
+
+/* RESPONSIVE PARA DONACIONES */
+@media (max-width: 768px) {
+    .plataformas-donacion {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-donacion {
+        width: 200px;
+        justify-content: center;
+    }
+}
 /* Hamburger menu para mobile */
 .hamburger {
     display: none;
@@ -846,6 +916,7 @@ img[src*="null"] {
         scroll-margin-top: 80px;
     }
 }
+
 
 
 
