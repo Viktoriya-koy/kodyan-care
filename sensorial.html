@@ -607,23 +607,26 @@
     <script src="js/script.js"></script>
     <script>
         // ===== SISTEMA DE AUDIO FUNCIONAL =====
-        let audioActual = null;
-        const audios = {
-            // Sonidos de naturaleza
-            'ocean-waves': 'resources/audios/ocean-waves.mp3',
-            'forest-rain': 'resources/audios/forest-rain.mp3', 
-            'birds-river': 'resources/audios/birds-river.mp3',
-            'creek-forest': 'resources/audios/creek-forest.mp3',
-            'rough-ocean': 'resources/audios/rough-ocean.mp3',
-            'downpour-thunder': 'resources/audios/downpour-thunder.mp3',
-            'white-noise': 'resources/audios/white-noise.mp3',
-            'string-quartet': 'resources/audios/string-quartet.mp3',
-            // Meditaciones
-            'malcolm': 'resources/audios/malcolm.mp3',
-            'christmas-dark': 'resources/audios/christmas-dark.mp3',
-            'handle-care': 'resources/audios/handle-care.mp3',
-            'head-clouds': 'resources/audios/head-clouds.mp3'
-        };
+      audioActual.play().catch(e => {
+    console.log('Error reproduciendo audio:', e);
+    alert('Error al reproducir: ' + audios[tipoAudio] + '\nAsegurate de que los archivos estén en resources/audio/');
+});
+       const audios = {
+    // Sonidos de naturaleza
+    'ocean-waves': '/kodyan-care/resources/audio/ocean-waves.mp3',
+    'forest-rain': '/kodyan-care/resources/audio/forest-rain.mp3', 
+    'birds-river': '/kodyan-care/resources/audio/birds-river.mp3',
+    'creek-forest': '/kodyan-care/resources/audio/creek-forest.mp3',
+    'rough-ocean': '/kodyan-care/resources/audio/rough-ocean.mp3',
+    'downpour-thunder': '/kodyan-care/resources/audio/downpour-thunder.mp3',
+    'white-noise': '/kodyan-care/resources/audio/white-noise.mp3',
+    'string-quartet': '/kodyan-care/resources/audio/string-quartet.mp3',
+    // Sonidos especiales
+    'malcolm': '/kodyan-care/resources/audio/malcolm.mp3',
+    'christmas-dark': '/kodyan-care/resources/audio/christmas-dark.mp3',
+    'handle-care': '/kodyan-care/resources/audio/handle-care.mp3',
+    'head-clouds': '/kodyan-care/resources/audio/head-clouds.mp3'
+};
 
         function toggleSonido(tipoAudio) {
             const botones = document.querySelectorAll('.sonido-btn');
@@ -1072,4 +1075,5 @@ function detenerParticulas() {
     </script>
 </body>
 </html>
+
 
