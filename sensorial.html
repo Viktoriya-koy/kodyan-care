@@ -225,45 +225,70 @@
             100% { transform: scale(1); }
         }
 
-        /* OBSERVACIÓN PASIVA */
-        .teatro-sombras {
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(45deg, #2c3e50, #34495e);
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
+      /* OBSERVACIÓN PASIVA */
+        /* TEATRO DE SOMBRAS MEJORADO - MÁS BORROSO Y REALISTA */
+.teatro-sombras {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(45deg, #1a1a2e, #16213e);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+}
 
-        .sombra {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: moverSombra 15s ease-in-out infinite;
-        }
+.sombra {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    filter: blur(8px);
+    animation: moverSombraSuave 20s ease-in-out infinite;
+    opacity: 0.7;
+}
 
-        @keyframes moverSombra {
-            0%, 100% { transform: translate(10px, 10px) scale(0.8); }
-            25% { transform: translate(80%, 30px) scale(1.2); }
-            50% { transform: translate(40px, 80%) scale(0.9); }
-            75% { transform: translate(90%, 70%) scale(1.1); }
-        }
+@keyframes moverSombraSuave {
+    0%, 100% { 
+        transform: translate(10px, 10px) scale(0.8);
+        opacity: 0.4;
+    }
+    25% { 
+        transform: translate(80%, 30px) scale(1.3);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translate(40px, 80%) scale(0.9);
+        opacity: 0.5;
+    }
+    75% { 
+        transform: translate(90%, 70%) scale(1.2);
+        opacity: 0.7;
+    }
+}
 
-        .nube-particulas {
-            width: 100%;
-            height: 150px;
-            position: relative;
-            background: #1a1a2e;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+/* Efecto de profundidad adicional */
+.teatro-sombras::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+        .particula-mejorada {
+    transition: background 0.3s ease;
+}
 
-        .particula {
-            position: absolute;
-            background: rgba(78, 205, 196, 0.6);
-            border-radius: 50%;
-            animation: flotarParticula 20s linear infinite;
-        }
+.nube-particulas {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    background: #1a1a2e;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #2a2a4e;
+}
 
         @keyframes flotarParticula {
             0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
@@ -341,7 +366,6 @@
                             <p>Seguí las burbujas con la vista para calmar la mente y reducir la ansiedad visual.</p>
                             <button class="btn-sensorial" onclick="crearBurbujas()">Crear Burbujas</button>
                             <div class="area-interactiva" id="area-burbujas" style="min-height: 200px; position: relative;">
-                                <p>Hacé clic para crear burbujas flotantes</p>
                             </div>
                         </div>
 
@@ -355,7 +379,6 @@
                                 <div class="respirar-circulo" id="circulo-respirar" onclick="toggleRespiracion()">
                                     Click aquí
                                 </div>
-                                <p>Hacé clic en el círculo para comenzar</p>
                             </div>
                         </div>
 
@@ -371,7 +394,6 @@
                                     <div class="color-option" style="background: #F0F9FF;" onclick="cambiarFondo('#F0F9FF')"></div>
                                     <div class="color-option" style="background: #E0F7F5;" onclick="cambiarFondo('#E0F7F5')"></div>
                                 </div>
-                                <p>Hacé clic en un color para cambiar el fondo temporalmente</p>
                             </div>
                         </div>
                     </div>
@@ -410,38 +432,37 @@
                             </div>
                         </div>
 
-                        <!-- MEDITACIONES GUIADAS -->
-                        <div class="herramienta-sensorial">
-                            <span class="herramienta-icono">🧘</span>
-                            <h3>Meditaciones Cortas</h3>
-                            <p>Guías auditivas breves para momentos específicos de ansiedad o estrés.</p>
-                            <div class="area-interactiva">
-                                <button class="sonido-btn" onclick="toggleSonido('malcolm')">🔄 Grounding</button>
-                                <button class="sonido-btn" onclick="toggleSonido('christmas-dark')">🌙 Para Dormir</button>
-                                <button class="sonido-btn" onclick="toggleSonido('handle-care')">🤗 Autocompasión</button>
-                                <button class="sonido-btn" onclick="toggleSonido('head-clouds')">☁️ Claridad Mental</button>
-                                <button class="sonido-btn" onclick="detenerSonidos()">⏹️ Parar Todo</button>
-                                <p><small>Usá auriculares para mejor experiencia</small></p>
-                            </div>
-                        </div>
+                        <!-- SONIDOS ESPECIALES -->
+<div class="herramienta-sensorial">
+    <span class="herramienta-icono">🎵</span>
+    <h3>Sonidos Especiales</h3>
+    <p>Paisajes sonoros únicos para diferentes estados emocionales y necesidades sensoriales.</p>
+    <div class="area-interactiva">
+        <button class="sonido-btn" onclick="toggleSonido('malcolm')">🎭 Sonido Malcolm</button>
+        <button class="sonido-btn" onclick="toggleSonido('christmas-dark')">🌌 Ambiente Oscuro</button>
+        <button class="sonido-btn" onclick="toggleSonido('handle-care')">💞 Cuidado Suave</button>
+        <button class="sonido-btn" onclick="toggleSonido('head-clouds')">🌀 Nubes Mentales</button>
+        <button class="sonido-btn" onclick="detenerSonidos()">⏹️ Parar Todo</button>
+        <p><small>Usá auriculares para mejor experiencia</small></p>
+    </div>
+</div>
                     </div>
                 </div>
 
                 <!-- OBSERVACIÓN PASIVA -->
                 <div class="categoria-sensorial">
                     <h2>👁️ Observación Pasiva</h2>
+                    <p>No hay que HACER nada. Solo observar sin participar.</p>
                     
                     <div class="herramientas-grid">
                         <!-- TEATRO DE SOMBRAS -->
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">🎭</span>
                             <h3>Teatro de Sombras</h3>
-                            <p>Figuras abstractas moviéndose. No significan nada. Solo observá sin participar.</p>
+                            <p>Figuras abstractas moviéndose. No significan nada. Solo existen.</p>
                             <button class="btn-sensorial" onclick="iniciarTeatroSombras()">Observar Sombras</button>
                             <div class="area-interactiva">
-                                <div class="teatro-sombras" id="teatro-sombras">
-                                    <p>Hacé clic en el botón para comenzar</p>
-                                </div>
+                                <div class="teatro-sombras" id="teatro-sombras"></div>
                             </div>
                         </div>
 
@@ -449,12 +470,10 @@
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">🌌</span>
                             <h3>Nube de Partículas</h3>
-                            <p>Partículas flotando según física simulada. Sin patrón, sin propósito. Solo existir.</p>
+                            <p>Partículas flotando según física simulada. Sin patrón, sin propósito.</p>
                             <button class="btn-sensorial" onclick="iniciarNubeParticulas()">Observar Partículas</button>
                             <div class="area-interactiva">
-                                <div class="nube-particulas" id="nube-particulas">
-                                    <p>Hacé clic en el botón para comenzar</p>
-                                </div>
+                                <div class="nube-particulas" id="nube-particulas"></div>
                             </div>
                         </div>
 
@@ -589,19 +608,19 @@
         let audioActual = null;
         const audios = {
             // Sonidos de naturaleza
-            'ocean-waves': 'audios/ocean-waves.mp3',
-            'forest-rain': 'audios/forest-rain.mp3', 
-            'birds-river': 'audios/birds-river.mp3',
-            'creek-forest': 'audios/creek-forest.mp3',
-            'rough-ocean': 'audios/rough-ocean.mp3',
-            'downpour-thunder': 'audios/downpour-thunder.mp3',
-            'white-noise': 'audios/white-noise.mp3',
-            'string-quartet': 'audios/string-quartet.mp3',
+            'ocean-waves': 'resources/audios/ocean-waves.mp3',
+            'forest-rain': 'resources/audios/forest-rain.mp3', 
+            'birds-river': 'resources/audios/birds-river.mp3',
+            'creek-forest': 'resources/audios/creek-forest.mp3',
+            'rough-ocean': 'resources/audios/rough-ocean.mp3',
+            'downpour-thunder': 'resources/audios/downpour-thunder.mp3',
+            'white-noise': 'resources/audios/white-noise.mp3',
+            'string-quartet': 'resources/audios/string-quartet.mp3',
             // Meditaciones
-            'malcolm': 'audios/malcolm.mp3',
-            'christmas-dark': 'audios/christmas-dark.mp3',
-            'handle-care': 'audios/handle-care.mp3',
-            'head-clouds': 'audios/head-clouds.mp3'
+            'malcolm': 'resources/audios/malcolm.mp3',
+            'christmas-dark': 'resources/audios/christmas-dark.mp3',
+            'handle-care': 'resources/audios/handle-care.mp3',
+            'head-clouds': 'resources/audios/head-clouds.mp3'
         };
 
         function toggleSonido(tipoAudio) {
@@ -849,38 +868,195 @@
 
         // ===== OBSERVACIÓN PASIVA =====
         function iniciarTeatroSombras() {
-            const teatro = document.getElementById('teatro-sombras');
-            teatro.innerHTML = '';
-            
-            for (let i = 0; i < 8; i++) {
-                const sombra = document.createElement('div');
-                sombra.className = 'sombra';
-                sombra.style.width = (20 + Math.random() * 60) + 'px';
-                sombra.style.height = sombra.style.width;
-                sombra.style.left = Math.random() * 90 + '%';
-                sombra.style.top = Math.random() * 90 + '%';
-                sombra.style.animationDelay = (Math.random() * 10) + 's';
-                sombra.style.animationDuration = (10 + Math.random() * 20) + 's';
-                teatro.appendChild(sombra);
-            }
+    const teatro = document.getElementById('teatro-sombras');
+    teatro.innerHTML = '';
+    
+    // Crear más sombras con diferentes características
+    for (let i = 0; i < 12; i++) {
+        const sombra = document.createElement('div');
+        sombra.className = 'sombra';
+        
+        // Tamaños variables más grandes
+        const tamaño = (30 + Math.random() * 70) + 'px';
+        sombra.style.width = tamaño;
+        sombra.style.height = tamaño;
+        
+        // Posiciones aleatorias
+        sombra.style.left = Math.random() * 85 + '%';
+        sombra.style.top = Math.random() * 85 + '%';
+        
+        // Animaciones únicas para cada sombra
+        sombra.style.animationDelay = (Math.random() * 15) + 's';
+        sombra.style.animationDuration = (15 + Math.random() * 25) + 's';
+        
+        // Opacidad variable para mayor realismo
+        sombra.style.opacity = (0.3 + Math.random() * 0.5).toString();
+        
+        // Blur variable
+        sombra.style.filter = `blur(${5 + Math.random() * 8}px)`;
+        
+        teatro.appendChild(sombra);
+    }
+    
+    // Agregar efecto de luz tenue móvil
+    const luz = document.createElement('div');
+    luz.style.position = 'absolute';
+    luz.style.width = '100px';
+    luz.style.height = '100px';
+    luz.style.background = 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)';
+    luz.style.borderRadius = '50%';
+    luz.style.filter = 'blur(15px)';
+    luz.style.animation = 'moverLuz 30s ease-in-out infinite';
+    luz.style.opacity = '0.6';
+    
+    teatro.appendChild(luz);
+    
+    // Keyframes para la luz móvil
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes moverLuz {
+            0% { transform: translate(10%, 20%); }
+            25% { transform: translate(70%, 60%); }
+            50% { transform: translate(40%, 80%); }
+            75% { transform: translate(80%, 30%); }
+            100% { transform: translate(10%, 20%); }
         }
+    `;
+    document.head.appendChild(style);
+}
 
-        function iniciarNubeParticulas() {
-            const nube = document.getElementById('nube-particulas');
-            nube.innerHTML = '';
+        // ===== NUBE DE PARTÍCULAS MEJORADA =====
+let particulas = [];
+let animacionId;
+
+function iniciarNubeParticulas() {
+    const nube = document.getElementById('nube-particulas');
+    nube.innerHTML = '';
+    particulas = [];
+    
+    // Crear 15 partículas blancas
+    for (let i = 0; i < 15; i++) {
+        const particula = document.createElement('div');
+        particula.className = 'particula-mejorada';
+        
+        // Posición aleatoria dentro del contenedor
+        const x = Math.random() * (nube.offsetWidth - 20);
+        const y = Math.random() * (nube.offsetHeight - 20);
+        
+        // Velocidad aleatoria
+        const velocidadX = (Math.random() - 0.5) * 2;
+        const velocidadY = (Math.random() - 0.5) * 2;
+        
+       particula.style.left = x + 'px';
+        particula.style.top = y + 'px';
+        particula.style.width = '8px';  // MÁS PEQUEÑAS
+        particula.style.height = '8px'; // MÁS PEQUEÑAS
+        particula.style.background = 'rgba(255, 255, 255, 0.8)';
+        particula.style.borderRadius = '50%';
+        particula.style.position = 'absolute';
+        particula.style.boxShadow = '0 0 6px rgba(255, 255, 255, 0.6)'; // Sombra más pequeña
+        
+        nube.appendChild(particula);
+        
+        // Guardar datos de la partícula
+        particulas.push({
+            elemento: particula,
+            x: x,
+            y: y,
+            velocidadX: velocidadX,
+            velocidadY: velocidadY,
+            radio: 6
+        });
+    }
+    
+    // Iniciar animación
+    if (animacionId) {
+        cancelAnimationFrame(animacionId);
+    }
+    animarParticulas();
+}
+
+function animarParticulas() {
+    const nube = document.getElementById('nube-particulas');
+    const ancho = nube.offsetWidth;
+    const alto = nube.offsetHeight;
+    
+    // Actualizar posición de cada partícula
+    particulas.forEach(particula => {
+        // Mover partícula
+        particula.x += particula.velocidadX;
+        particula.y += particula.velocidadY;
+        
+        // Rebote en los bordes
+        if (particula.x <= 0 || particula.x >= ancho - particula.radio * 2) {
+            particula.velocidadX *= -1;
+        }
+        if (particula.y <= 0 || particula.y >= alto - particula.radio * 2) {
+            particula.velocidadY *= -1;
+        }
+        
+        // Aplicar posición
+        particula.elemento.style.left = particula.x + 'px';
+        particula.elemento.style.top = particula.y + 'px';
+    });
+    
+    // Detectar colisiones
+    detectarColisiones();
+    
+    // Continuar animación
+    animacionId = requestAnimationFrame(animarParticulas);
+}
+
+function detectarColisiones() {
+    for (let i = 0; i < particulas.length; i++) {
+        for (let j = i + 1; j < particulas.length; j++) {
+            const p1 = particulas[i];
+            const p2 = particulas[j];
             
-            for (let i = 0; i < 15; i++) {
-                const particula = document.createElement('div');
-                particula.className = 'particula';
-                particula.style.width = (3 + Math.random() * 8) + 'px';
-                particula.style.height = particula.style.width;
-                particula.style.left = Math.random() * 100 + '%';
-                particula.style.top = Math.random() * 100 + '%';
-                particula.style.animationDelay = (Math.random() * 15) + 's';
-                particula.style.animationDuration = (15 + Math.random() * 10) + 's';
-                nube.appendChild(particula);
+            // Calcular distancia entre partículas
+            const dx = p1.x - p2.x;
+            const dy = p1.y - p2.y;
+            const distancia = Math.sqrt(dx * dx + dy * dy);
+            
+            // Si hay colisión
+            if (distancia < p1.radio + p2.radio) {
+                // Cambiar colores momentáneamente
+                p1.elemento.style.background = 'rgba(78, 205, 196, 0.8)';
+                p2.elemento.style.background = 'rgba(78, 205, 196, 0.8)';
+                
+                setTimeout(() => {
+                    p1.elemento.style.background = 'rgba(255, 255, 255, 0.8)';
+                    p2.elemento.style.background = 'rgba(255, 255, 255, 0.8)';
+                }, 300);
+                
+                // Intercambiar velocidades (colisión elástica simple)
+                const tempVx = p1.velocidadX;
+                const tempVy = p1.velocidadY;
+                
+                p1.velocidadX = p2.velocidadX;
+                p1.velocidadY = p2.velocidadY;
+                
+                p2.velocidadX = tempVx;
+                p2.velocidadY = tempVy;
+                
+                // Separar partículas para evitar que se queden pegadas
+                const overlap = (p1.radio + p2.radio - distancia) / 2;
+                p1.x += overlap * (dx / distancia);
+                p1.y += overlap * (dy / distancia);
+                p2.x -= overlap * (dx / distancia);
+                p2.y -= overlap * (dy / distancia);
             }
         }
+    }
+}
+
+// Función para detener la animación si es necesario
+function detenerParticulas() {
+    if (animacionId) {
+        cancelAnimationFrame(animacionId);
+        animacionId = null;
+    }
+}
 
         // ===== INICIALIZACIÓN =====
         document.addEventListener('DOMContentLoaded', function() {
