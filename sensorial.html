@@ -31,10 +31,9 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            text-align: center;
         }
 
-        /* GRID DE 3 COLUMNAS BIEN ESPACIADO */
+        /* LAYOUT DE 3 COLUMNAS BIEN EQUILIBRADO */
         .herramientas-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -52,8 +51,8 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-            height: 100%;
-            min-height: 400px;
+            height: fit-content;
+            min-height: 500px;
         }
 
         .herramienta-sensorial:hover {
@@ -63,9 +62,8 @@
 
         .herramienta-icono {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: block;
-            min-height: 60px;
         }
 
         .herramienta-sensorial h3 {
@@ -89,15 +87,15 @@
             background: var(--color-primary);
             color: white;
             border: none;
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             display: inline-block;
             text-decoration: none;
-            width: 100%;
-            margin-top: auto;
+            margin: 0.3rem;
+            font-size: 0.9rem;
         }
 
         .btn-sensorial:hover {
@@ -112,7 +110,7 @@
             border-radius: 15px;
             margin: 1rem 0;
             border: 2px solid var(--color-primary-light);
-            min-height: 150px;
+            min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -120,6 +118,7 @@
             gap: 1rem;
         }
 
+        /* BURBUJAS FLOTANTES */
         .burbuja {
             width: 40px;
             height: 40px;
@@ -128,13 +127,19 @@
             position: absolute;
             cursor: pointer;
             transition: transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: flotar 8s ease-in-out infinite;
+        }
+
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
 
         .burbuja:hover {
             transform: scale(1.3);
         }
 
+        /* RESPIRACIÓN GUIADA - ARREGLADA */
         .respirar-circulo {
             width: 120px;
             height: 120px;
@@ -147,58 +152,60 @@
             font-weight: bold;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 4s ease-in-out;
+            transition: all 4s cubic-bezier(0.4, 0, 0.2, 1);
             margin: 0 auto;
-            box-shadow: 0 4px 12px rgba(109, 103, 228, 0.3);
+            box-shadow: 0 4px 15px rgba(109, 103, 228, 0.3);
         }
 
         .respirar-circulo.respirando {
-            transform: scale(1.4);
+            transform: scale(1.8);
             background: linear-gradient(135deg, #4ECDC4, #2aB5ad);
         }
 
+        /* CONTADORES Y DISPLAYS */
         .contador {
             font-size: 2.5rem;
             font-weight: bold;
             color: var(--color-primary);
             margin: 0.5rem 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
+        /* GRID DE COLORES */
         .colores-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 0.8rem;
             margin: 1rem 0;
-            width: 100%;
         }
 
         .color-option {
-            width: 100%;
+            width: 50px;
             height: 50px;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             transition: var(--transition);
             border: 3px solid transparent;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .color-option:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
             border-color: var(--color-text);
         }
 
+        /* BOTONES DE SONIDO MEJORADOS */
         .sonido-btn {
-            background: var(--color-surface);
+            background: var(--color-secondary);
             border: 2px solid var(--color-primary);
-            padding: 0.8rem 1rem;
+            padding: 0.7rem 1rem;
             border-radius: 8px;
             cursor: pointer;
             transition: var(--transition);
             font-size: 0.9rem;
             margin: 0.3rem;
-            width: calc(50% - 0.6rem);
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .sonido-btn:hover {
@@ -209,37 +216,60 @@
         .sonido-btn.reproduciendo {
             background: var(--color-primary);
             color: white;
-            animation: pulse 1s infinite;
-            border-color: var(--color-primary-dark);
-        }
-
-        .controles-sonido {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-        }
-
-        .btn-control {
-            background: var(--color-secondary);
-            border: 2px solid var(--color-primary-light);
-            padding: 0.6rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .btn-control:hover {
-            background: var(--color-primary-light);
-            color: white;
+            animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+
+        /* OBSERVACIÓN PASIVA */
+        .teatro-sombras {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sombra {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: moverSombra 15s ease-in-out infinite;
+        }
+
+        @keyframes moverSombra {
+            0%, 100% { transform: translate(10px, 10px) scale(0.8); }
+            25% { transform: translate(80%, 30px) scale(1.2); }
+            50% { transform: translate(40px, 80%) scale(0.9); }
+            75% { transform: translate(90%, 70%) scale(1.1); }
+        }
+
+        .nube-particulas {
+            width: 100%;
+            height: 150px;
+            position: relative;
+            background: #1a1a2e;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .particula {
+            position: absolute;
+            background: rgba(78, 205, 196, 0.6);
+            border-radius: 50%;
+            animation: flotarParticula 20s linear infinite;
+        }
+
+        @keyframes flotarParticula {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100px, -100px) scale(1.5); opacity: 0; }
         }
 
         /* RESPONSIVE */
@@ -256,36 +286,16 @@
             
             .herramienta-sensorial {
                 padding: 1.5rem;
-                min-height: 350px;
+                min-height: auto;
             }
             
             .colores-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
             
-            .color-option {
-                height: 40px;
-            }
-            
             .sonido-btn {
-                width: 100%;
-                margin: 0.2rem 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .herramienta-sensorial {
-                min-height: 300px;
-            }
-            
-            .contador {
-                font-size: 2rem;
-            }
-            
-            .respirar-circulo {
-                width: 100px;
-                height: 100px;
-                font-size: 0.9rem;
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -328,22 +338,22 @@
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">🫧</span>
                             <h3>Burbujas Flotantes</h3>
-                            <p>Seguí las burbujas con la vista para calmar la mente y reducir la ansiedad visual. Hacé clic en ellas para hacerlas desaparecer.</p>
+                            <p>Seguí las burbujas con la vista para calmar la mente y reducir la ansiedad visual.</p>
                             <button class="btn-sensorial" onclick="crearBurbujas()">Crear Burbujas</button>
                             <div class="area-interactiva" id="area-burbujas" style="min-height: 200px; position: relative;">
-                                <p>Hacé clic en el botón para crear burbujas</p>
+                                <p>Hacé clic para crear burbujas flotantes</p>
                             </div>
                         </div>
 
-                        <!-- RESPIRACIÓN GUIADA -->
+                        <!-- RESPIRACIÓN GUIADA - ARREGLADA -->
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">🌬️</span>
                             <h3>Respiración Guiada</h3>
-                            <p>Segui el círculo que se expande y contrae para regular tu respiración de forma natural y sin esfuerzo.</p>
+                            <p>Segui el círculo que se expande y contrae para regular tu respiración automáticamente.</p>
                             <button class="btn-sensorial" onclick="iniciarRespiracion()">Comenzar Respiración</button>
                             <div class="area-interactiva">
                                 <div class="respirar-circulo" id="circulo-respirar" onclick="toggleRespiracion()">
-                                    Inhalar
+                                    Click aquí
                                 </div>
                                 <p>Hacé clic en el círculo para comenzar</p>
                             </div>
@@ -353,7 +363,7 @@
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">🎨</span>
                             <h3>Colores Calmantes</h3>
-                            <p>Mirá fijamente estos colores diseñados para reducir la ansiedad visual. El cambio dura 5 segundos.</p>
+                            <p>Mirá fijamente estos colores diseñados para reducir la ansiedad visual y el estrés.</p>
                             <div class="area-interactiva">
                                 <div class="colores-grid">
                                     <div class="color-option" style="background: #6D67E4;" onclick="cambiarFondo('#6D67E4')"></div>
@@ -361,30 +371,28 @@
                                     <div class="color-option" style="background: #F0F9FF;" onclick="cambiarFondo('#F0F9FF')"></div>
                                     <div class="color-option" style="background: #E0F7F5;" onclick="cambiarFondo('#E0F7F5')"></div>
                                 </div>
-                                <p>Hacé clic en un color para cambiar el fondo</p>
+                                <p>Hacé clic en un color para cambiar el fondo temporalmente</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- HERRAMIENTAS AUDITIVAS -->
+                <!-- AMBIENTES SONOROS -->
                 <div class="categoria-sensorial">
-                    <h2>👂 Herramientas Auditivas</h2>
+                    <h2>👂 Ambientes Sonoros</h2>
                     
                     <div class="herramientas-grid">
                         <!-- SONIDOS DE NATURALEZA -->
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">🌊</span>
                             <h3>Sonidos de Naturaleza</h3>
-                            <p>Sonidos ambientales para enmascarar ruidos molestos y crear un espacio auditivo seguro y predecible.</p>
+                            <p>Paisajes sonoros naturales para enmascarar ruidos molestos y calmar la mente.</p>
                             <div class="area-interactiva">
-                                <div class="controles-sonido">
-                                    <button class="sonido-btn" onclick="toggleSonido('forest-rain', this)">🌧️ Bosque con Lluvia</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('ocean-waves', this)">🌊 Olas del Mar</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('creek-forest', this)">🌳 Arroyo en Bosque</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('birds-river', this)">🐦 Pájaros y Río</button>
-                                    <button class="sonido-btn" onclick="detenerSonidos()">⏹️ Parar Todo</button>
-                                </div>
+                                <button class="sonido-btn" onclick="toggleSonido('ocean-waves')">🌊 Olas del Mar</button>
+                                <button class="sonido-btn" onclick="toggleSonido('forest-rain')">🌧️ Lluvia en Bosque</button>
+                                <button class="sonido-btn" onclick="toggleSonido('birds-river')">🐦 Pájaros y Río</button>
+                                <button class="sonido-btn" onclick="toggleSonido('creek-forest')">🌲 Arroyo en Bosque</button>
+                                <button class="sonido-btn" onclick="detenerSonidos()">⏹️ Parar Todo</button>
                             </div>
                         </div>
 
@@ -392,53 +400,60 @@
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">🏙️</span>
                             <h3>Sonidos Ambientales</h3>
-                            <p>Paisajes sonoros urbanos y abstractos para diferentes estados de ánimo y necesidades sensoriales.</p>
+                            <p>Ambientes sonoros variados para diferentes estados de ánimo y necesidades.</p>
                             <div class="area-interactiva">
-                                <div class="controles-sonido">
-                                    <button class="sonido-btn" onclick="toggleSonido('white-noise', this)">📺 Ruido Blanco</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('downpour-thunder', this)">⛈️ Tormenta Fuerte</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('rough-ocean', this)">🌊 Mar Agitado</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('string-quartet', this)">🎻 Música Clásica</button>
-                                    <button class="sonido-btn" onclick="detenerSonidos()">⏹️ Parar Todo</button>
-                                </div>
+                                <button class="sonido-btn" onclick="toggleSonido('rough-ocean')">🌪️ Mar Agitado</button>
+                                <button class="sonido-btn" onclick="toggleSonido('downpour-thunder')">⛈️ Tormenta Fuerte</button>
+                                <button class="sonido-btn" onclick="toggleSonido('white-noise')">📻 Ruido Blanco</button>
+                                <button class="sonido-btn" onclick="toggleSonido('string-quartet')">🎻 Música Clásica</button>
+                                <button class="sonido-btn" onclick="detenerSonidos()">⏹️ Parar Todo</button>
                             </div>
                         </div>
 
-                        <!-- SONIDOS RELAJANTES -->
+                        <!-- MEDITACIONES GUIADAS -->
                         <div class="herramienta-sensorial">
-                            <span class="herramienta-icono">💤</span>
-                            <h3>Sonidos Relajantes</h3>
-                            <p>Tonos y frecuencias diseñadas para inducir estados de calma, relajación profunda y sueño.</p>
+                            <span class="herramienta-icono">🧘</span>
+                            <h3>Meditaciones Cortas</h3>
+                            <p>Guías auditivas breves para momentos específicos de ansiedad o estrés.</p>
                             <div class="area-interactiva">
-                                <div class="controles-sonido">
-                                    <button class="sonido-btn" onclick="toggleSonido('malcolm', this)">🌀 Tono Relajante 1</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('christmas-dark', this)">🎄 Tono Relajante 2</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('handle-care', this)">🫳 Tono Relajante 3</button>
-                                    <button class="sonido-btn" onclick="toggleSonido('head-clouds', this)">☁️ Tono Relajante 4</button>
-                                    <button class="sonido-btn" onclick="detenerSonidos()">⏹️ Parar Todo</button>
-                                </div>
-                                <p><small>🎧 Usá auriculares para mejor experiencia</small></p>
+                                <button class="sonido-btn" onclick="toggleSonido('malcolm')">🔄 Grounding</button>
+                                <button class="sonido-btn" onclick="toggleSonido('christmas-dark')">🌙 Para Dormir</button>
+                                <button class="sonido-btn" onclick="toggleSonido('handle-care')">🤗 Autocompasión</button>
+                                <button class="sonido-btn" onclick="toggleSonido('head-clouds')">☁️ Claridad Mental</button>
+                                <button class="sonido-btn" onclick="detenerSonidos()">⏹️ Parar Todo</button>
+                                <p><small>Usá auriculares para mejor experiencia</small></p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- HERRAMIENTAS INTERACTIVAS -->
+                <!-- OBSERVACIÓN PASIVA -->
                 <div class="categoria-sensorial">
-                    <h2>🎮 Herramientas Interactivas</h2>
+                    <h2>👁️ Observación Pasiva</h2>
                     
                     <div class="herramientas-grid">
-                        <!-- CONTADOR TÁCTIL -->
+                        <!-- TEATRO DE SOMBRAS -->
                         <div class="herramienta-sensorial">
-                            <span class="herramienta-icono">🔢</span>
-                            <h3>Contador Táctil</h3>
-                            <p>Usá este contador para ejercicios de grounding, mindfulness o para llevar registro de repeticiones.</p>
+                            <span class="herramienta-icono">🎭</span>
+                            <h3>Teatro de Sombras</h3>
+                            <p>Figuras abstractas moviéndose. No significan nada. Solo observá sin participar.</p>
+                            <button class="btn-sensorial" onclick="iniciarTeatroSombras()">Observar Sombras</button>
                             <div class="area-interactiva">
-                                <div class="contador" id="contador-tactil">0</div>
-                                <div class="controles-sonido">
-                                    <button class="btn-control" onclick="aumentarContador()">+1</button>
-                                    <button class="btn-control" onclick="disminuirContador()">-1</button>
-                                    <button class="btn-control" onclick="resetearContador()">🔄</button>
+                                <div class="teatro-sombras" id="teatro-sombras">
+                                    <p>Hacé clic en el botón para comenzar</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NUBE DE PARTÍCULAS -->
+                        <div class="herramienta-sensorial">
+                            <span class="herramienta-icono">🌌</span>
+                            <h3>Nube de Partículas</h3>
+                            <p>Partículas flotando según física simulada. Sin patrón, sin propósito. Solo existir.</p>
+                            <button class="btn-sensorial" onclick="iniciarNubeParticulas()">Observar Partículas</button>
+                            <div class="area-interactiva">
+                                <div class="nube-particulas" id="nube-particulas">
+                                    <p>Hacé clic en el botón para comenzar</p>
                                 </div>
                             </div>
                         </div>
@@ -447,16 +462,47 @@
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">⏱️</span>
                             <h3>Metrónomo Visual</h3>
-                            <p>Segui el ritmo constante para sincronizar tu respiración, calmarte o mantener el foco.</p>
+                            <p>Segui el ritmo constante para sincronizar tu respiración y calmarte.</p>
                             <div class="area-interactiva">
                                 <div class="contador" id="metronomo">60</div>
-                                <div class="controles-sonido">
-                                    <button class="btn-control" onclick="cambiarTempo(-10)">-10</button>
-                                    <button class="btn-control" onclick="cambiarTempo(-5)">-5</button>
-                                    <button class="btn-control" onclick="cambiarTempo(5)">+5</button>
-                                    <button class="btn-control" onclick="cambiarTempo(10)">+10</button>
+                                <div>
+                                    <button class="btn-sensorial" onclick="cambiarTempo(-10)">-10</button>
+                                    <span>BPM</span>
+                                    <button class="btn-sensorial" onclick="cambiarTempo(10)">+10</button>
                                 </div>
-                                <button class="btn-sensorial" onclick="toggleMetronomo()" id="btn-metronomo" style="margin-top: 1rem;">▶️ Iniciar Metrónomo</button>
+                                <button class="btn-sensorial" onclick="toggleMetronomo()" id="btn-metronomo">▶️ Iniciar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HERRAMIENTAS TÁCTILES -->
+                <div class="categoria-sensorial">
+                    <h2>✋ Herramientas Táctiles</h2>
+                    
+                    <div class="herramientas-grid">
+                        <!-- CONTADOR TÁCTIL -->
+                        <div class="herramienta-sensorial">
+                            <span class="herramienta-icono">🔢</span>
+                            <h3>Contador Táctil</h3>
+                            <p>Usá este contador para ejercicios de grounding y anclaje táctil.</p>
+                            <div class="area-interactiva">
+                                <div class="contador" id="contador-tactil">0</div>
+                                <button class="btn-sensorial" onclick="aumentarContador()">+1 Click</button>
+                                <button class="btn-sensorial" onclick="resetearContador()">🔄 Reiniciar</button>
+                            </div>
+                        </div>
+
+                        <!-- 5-4-3-2-1 INTERACTIVO -->
+                        <div class="herramienta-sensorial">
+                            <span class="herramienta-icono">🎯</span>
+                            <h3>5-4-3-2-1 Interactivo</h3>
+                            <p>Guía interactiva para la técnica de grounding sensorial.</p>
+                            <div class="area-interactiva">
+                                <h4 id="paso-actual">5 cosas que VEO</h4>
+                                <div class="contador" id="contador-54321">5</div>
+                                <button class="btn-sensorial" onclick="siguientePaso()">✅ Siguiente</button>
+                                <button class="btn-sensorial" onclick="reiniciar54321()">🔄 Reiniciar</button>
                             </div>
                         </div>
 
@@ -464,14 +510,13 @@
                         <div class="herramienta-sensorial">
                             <span class="herramienta-icono">⏰</span>
                             <h3>Temporizador de Respiración</h3>
-                            <p>Timer visual para prácticas de respiración controlada, meditación o descansos conscientes.</p>
+                            <p>Timer visual para prácticas de respiración controlada.</p>
                             <div class="area-interactiva">
-                                <div class="contador" id="temporizador">05:00</div>
-                                <div class="controles-sonido">
-                                    <button class="btn-control" onclick="iniciarTemporizador(60)">1 min</button>
-                                    <button class="btn-control" onclick="iniciarTemporizador(300)">5 min</button>
-                                    <button class="btn-control" onclick="iniciarTemporizador(600)">10 min</button>
-                                    <button class="btn-control" onclick="detenerTemporizador()">⏹️</button>
+                                <div class="contador" id="temporizador">00:00</div>
+                                <div>
+                                    <button class="btn-sensorial" onclick="iniciarTemporizador(60)">1 min</button>
+                                    <button class="btn-sensorial" onclick="iniciarTemporizador(300)">5 min</button>
+                                    <button class="btn-sensorial" onclick="detenerTemporizador()">⏹️ Parar</button>
                                 </div>
                             </div>
                         </div>
@@ -479,27 +524,14 @@
                 </div>
 
                 <!-- INFORMACIÓN IMPORTANTE -->
-                <div class="herramienta-sensorial" style="text-align: left; grid-column: 1 / -1;">
+                <div class="herramienta-sensorial" style="grid-column: 1 / -1; text-align: left;">
                     <h3>💡 Cómo usar estas herramientas</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-                        <div>
-                            <h4>🎯 Para mejores resultados:</h4>
-                            <ul>
-                                <li>Elegí UNA herramienta a la vez</li>
-                                <li>Usá auriculares para sonidos</li>
-                                <li>Enfocate en la sensación, no en "hacerlo perfecto"</li>
-                                <li>Si te abruma, pará y probá otra herramienta</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4>🚨 Recordá:</h4>
-                            <ul>
-                                <li>Respirá mientras usás cualquier herramienta</li>
-                                <li>Podés combinar herramientas simples</li>
-                                <li>Tomá descansos si sentís sobrecarga</li>
-                                <li>Tu bienestar es lo más importante</li>
-                            </ul>
-                        </div>
+                    <div class="pasos-plan">
+                        <div class="paso"><strong>Elegí UNA herramienta</strong> a la vez - no intentes usar varias juntas</div>
+                        <div class="paso"><strong>Usá auriculares</strong> para las herramientas de sonido</div>
+                        <div class="paso"><strong>Enfocate en la sensación</strong> en lugar de "hacerlo perfecto"</div>
+                        <div class="paso"><strong>Si te abruma, pará</strong> y probá otra herramienta más simple</div>
+                        <div class="paso"><strong>Recordá respirar</strong> mientras usás cualquier herramienta</div>
                     </div>
                 </div>
             </div>
@@ -550,55 +582,60 @@
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS MEJORADOS ===== -->
+    <!-- ===== SCRIPTS COMPLETOS Y FUNCIONALES ===== -->
     <script src="js/script.js"></script>
     <script>
-        // ===== SISTEMA DE AUDIO =====
+        // ===== SISTEMA DE AUDIO FUNCIONAL =====
         let audioActual = null;
         const audios = {
-            'forest-rain': new Audio('resources/audios/forest-rain.mp3'),
-            'ocean-waves': new Audio('resources/audios/ocean-waves.mp3'),
-            'creek-forest': new Audio('resources/audios/creek-forest.mp3'),
-            'birds-river': new Audio('resources/audios/birds-river.mp3'),
-            'white-noise': new Audio('resources/audios/white-noise.mp3'),
-            'downpour-thunder': new Audio('resources/audios/downpour-thunder.mp3'),
-            'rough-ocean': new Audio('resources/audios/rough-ocean.mp3'),
-            'string-quartet': new Audio('resources/audios/string-quartet.mp3'),
-            'malcolm': new Audio('resources/audios/malcolm.mp3'),
-            'christmas-dark': new Audio('resources/audios/christmas-dark.mp3'),
-            'handle-care': new Audio('resources/audios/handle-care.mp3'),
-            'head-clouds': new Audio('resources/audios/head-clouds.mp3')
+            // Sonidos de naturaleza
+            'ocean-waves': 'audios/ocean-waves.mp3',
+            'forest-rain': 'audios/forest-rain.mp3', 
+            'birds-river': 'audios/birds-river.mp3',
+            'creek-forest': 'audios/creek-forest.mp3',
+            'rough-ocean': 'audios/rough-ocean.mp3',
+            'downpour-thunder': 'audios/downpour-thunder.mp3',
+            'white-noise': 'audios/white-noise.mp3',
+            'string-quartet': 'audios/string-quartet.mp3',
+            // Meditaciones
+            'malcolm': 'audios/malcolm.mp3',
+            'christmas-dark': 'audios/christmas-dark.mp3',
+            'handle-care': 'audios/handle-care.mp3',
+            'head-clouds': 'audios/head-clouds.mp3'
         };
 
-        // Configurar audios para loop
-        Object.values(audios).forEach(audio => {
-            audio.loop = true;
-            audio.volume = 0.7;
-        });
-
-        function toggleSonido(tipo, boton) {
-            // Detener audio actual si hay uno
-            if (audioActual && audioActual !== audios[tipo]) {
-                audioActual.pause();
-                audioActual.currentTime = 0;
-                document.querySelectorAll('.sonido-btn').forEach(btn => {
-                    btn.classList.remove('reproduciendo');
-                });
-            }
-
-            // Reproducir o pausar
-            if (audioActual === audios[tipo]) {
-                // Pausar si es el mismo audio
+        function toggleSonido(tipoAudio) {
+            const botones = document.querySelectorAll('.sonido-btn');
+            
+            // Si ya está reproduciendo este audio, pararlo
+            if (audioActual && audioActual.src.includes(audios[tipoAudio])) {
                 audioActual.pause();
                 audioActual.currentTime = 0;
                 audioActual = null;
-                boton.classList.remove('reproduciendo');
-            } else {
-                // Reproducir nuevo audio
-                audioActual = audios[tipo];
-                audioActual.play().catch(e => console.log('Error reproduciendo audio:', e));
-                boton.classList.add('reproduciendo');
+                botones.forEach(btn => btn.classList.remove('reproduciendo'));
+                event.target.classList.remove('reproduciendo');
+                return;
             }
+            
+            // Parar audio actual si hay uno
+            if (audioActual) {
+                audioActual.pause();
+                audioActual.currentTime = 0;
+            }
+            
+            // Quitar clase de todos los botones
+            botones.forEach(btn => btn.classList.remove('reproduciendo'));
+            
+            // Reproducir nuevo audio
+            audioActual = new Audio(audios[tipoAudio]);
+            audioActual.loop = true;
+            audioActual.play().catch(e => {
+                console.log('Error reproduciendo audio:', e);
+                alert('Error al reproducir el audio. Asegurate de que los archivos estén en la carpeta resources/audios/');
+            });
+            
+            // Marcar botón como activo
+            event.target.classList.add('reproduciendo');
         }
 
         function detenerSonidos() {
@@ -612,12 +649,10 @@
             });
         }
 
-        // ===== HERRAMIENTAS VISUALES =====
-        
-        // BURBUJAS FLOTANTES
+        // ===== BURBUJAS FLOTANTES =====
         function crearBurbujas() {
             const area = document.getElementById('area-burbujas');
-            area.innerHTML = '<p>Hacé clic en las burbujas para hacerlas desaparecer</p>';
+            area.innerHTML = '';
             
             for (let i = 0; i < 12; i++) {
                 setTimeout(() => {
@@ -628,45 +663,51 @@
                     burbuja.style.background = `hsl(${Math.random() * 360}, 70%, 65%)`;
                     burbuja.style.width = (25 + Math.random() * 35) + 'px';
                     burbuja.style.height = burbuja.style.width;
+                    burbuja.style.animationDelay = (Math.random() * 5) + 's';
                     
                     burbuja.onclick = function() {
+                        this.style.animation = 'none';
                         this.style.transform = 'scale(0)';
-                        this.style.opacity = '0';
                         setTimeout(() => this.remove(), 300);
                     };
                     
                     area.appendChild(burbuja);
-                }, i * 150);
+                }, i * 300);
             }
         }
 
-        // RESPIRACIÓN GUIADA
+        // ===== RESPIRACIÓN GUIADA - COMPLETAMENTE ARREGLADA =====
         let respirando = false;
+        let cicloRespiracion;
+
         function toggleRespiracion() {
             const circulo = document.getElementById('circulo-respirar');
-            respirando = !respirando;
             
-            if (respirando) {
+            if (!respirando) {
+                // INICIAR RESPIRACIÓN
+                respirando = true;
                 circulo.classList.add('respirando');
                 circulo.textContent = 'Inhalar...';
-                setTimeout(() => {
+                
+                cicloRespiracion = setTimeout(() => {
                     circulo.textContent = 'Mantener...';
                     setTimeout(() => {
                         circulo.textContent = 'Exhalar...';
+                        circulo.classList.remove('respirando');
+                        
                         setTimeout(() => {
-                            circulo.textContent = 'Pausa...';
-                            setTimeout(() => {
-                                if (respirando) {
-                                    circulo.textContent = 'Inhalar...';
-                                    setTimeout(() => toggleRespiracion(), 100);
-                                }
-                            }, 1000);
+                            if (respirando) {
+                                toggleRespiracion(); // Reiniciar ciclo
+                            }
                         }, 4000);
-                    }, 1000);
+                    }, 2000);
                 }, 4000);
             } else {
+                // DETENER RESPIRACIÓN
+                respirando = false;
+                clearTimeout(cicloRespiracion);
                 circulo.classList.remove('respirando');
-                circulo.textContent = 'Inhalar';
+                circulo.textContent = 'Click aquí';
             }
         }
 
@@ -676,7 +717,7 @@
             }
         }
 
-        // CAMBIAR COLORES
+        // ===== CAMBIAR COLORES =====
         function cambiarFondo(color) {
             const originalBackground = document.querySelector('.herramienta-detalle').style.background;
             document.querySelector('.herramienta-detalle').style.background = color;
@@ -684,29 +725,10 @@
             
             setTimeout(() => {
                 document.querySelector('.herramienta-detalle').style.background = originalBackground || 'linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%)';
-            }, 5000);
+            }, 3000);
         }
 
-        // ===== HERRAMIENTAS INTERACTIVAS =====
-        
-        // CONTADOR TÁCTIL
-        let contador = 0;
-        function aumentarContador() {
-            contador++;
-            document.getElementById('contador-tactil').textContent = contador;
-        }
-
-        function disminuirContador() {
-            if (contador > 0) contador--;
-            document.getElementById('contador-tactil').textContent = contador;
-        }
-
-        function resetearContador() {
-            contador = 0;
-            document.getElementById('contador-tactil').textContent = contador;
-        }
-
-        // METRÓNOMO
+        // ===== METRÓNOMO =====
         let metronomoActivo = false;
         let intervaloMetronomo;
         let bpm = 60;
@@ -717,18 +739,18 @@
             
             if (!metronomoActivo) {
                 metronomoActivo = true;
-                btn.textContent = '⏸️ Pausar Metrónomo';
+                btn.textContent = '⏸️ Pausar';
                 intervaloMetronomo = setInterval(() => {
                     display.style.transform = 'scale(1.2)';
-                    display.style.color = 'var(--color-primary-dark)';
+                    display.style.color = '#FF6B6B';
                     setTimeout(() => {
                         display.style.transform = 'scale(1)';
                         display.style.color = 'var(--color-primary)';
-                    }, 200);
+                    }, 100);
                 }, 60000 / bpm);
             } else {
                 metronomoActivo = false;
-                btn.textContent = '▶️ Iniciar Metrónomo';
+                btn.textContent = '▶️ Iniciar';
                 clearInterval(intervaloMetronomo);
                 display.style.transform = 'scale(1)';
                 display.style.color = 'var(--color-primary)';
@@ -745,18 +767,58 @@
             }
         }
 
-        // TEMPORIZADOR
+        // ===== CONTADOR TÁCTIL =====
+        let contador = 0;
+        function aumentarContador() {
+            contador++;
+            const display = document.getElementById('contador-tactil');
+            display.textContent = contador;
+            display.style.transform = 'scale(1.3)';
+            setTimeout(() => display.style.transform = 'scale(1)', 200);
+        }
+
+        function resetearContador() {
+            contador = 0;
+            document.getElementById('contador-tactil').textContent = contador;
+        }
+
+        // ===== 5-4-3-2-1 INTERACTIVO =====
+        const pasos = [
+            { texto: "5 cosas que VEO", numero: 5 },
+            { texto: "4 cosas que TOCÁ", numero: 4 },
+            { texto: "3 cosas que OÍS", numero: 3 },
+            { texto: "2 cosas que OLÉS", numero: 2 },
+            { texto: "1 cosa que SABOREÁS", numero: 1 }
+        ];
+        let pasoActual = 0;
+
+        function siguientePaso() {
+            pasoActual++;
+            if (pasoActual >= pasos.length) {
+                pasoActual = 0;
+            }
+            actualizarPaso();
+        }
+
+        function reiniciar54321() {
+            pasoActual = 0;
+            actualizarPaso();
+        }
+
+        function actualizarPaso() {
+            document.getElementById('paso-actual').textContent = pasos[pasoActual].texto;
+            document.getElementById('contador-54321').textContent = pasos[pasoActual].numero;
+        }
+
+        // ===== TEMPORIZADOR =====
         let temporizadorActivo = false;
-        let tiempoRestante = 300; // 5 minutos por defecto
+        let tiempoRestante = 0;
         
         function iniciarTemporizador(segundos) {
-            if (temporizadorActivo) {
-                detenerTemporizador();
-            }
+            if (temporizadorActivo) return;
             
             tiempoRestante = segundos;
             temporizadorActivo = true;
-            actualizarTemporizador();
             
             const intervalo = setInterval(() => {
                 if (!temporizadorActivo) {
@@ -765,40 +827,70 @@
                 }
                 
                 tiempoRestante--;
-                actualizarTemporizador();
+                const minutos = Math.floor(tiempoRestante / 60);
+                const segs = tiempoRestante % 60;
+                document.getElementById('temporizador').textContent = 
+                    `${minutos.toString().padStart(2, '0')}:${segs.toString().padStart(2, '0')}`;
                 
                 if (tiempoRestante <= 0) {
                     clearInterval(intervalo);
                     temporizadorActivo = false;
                     document.getElementById('temporizador').textContent = "¡Listo!";
-                    document.getElementById('temporizador').style.color = "var(--color-success)";
-                    
-                    // Reproducir sonido de finalización si hay audio
-                    if (audioActual) {
-                        const beep = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmUgBjiN1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmUgBjiN1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmUgBjiN1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmUgBjiN1/LMeSw==');
-                        beep.volume = 0.3;
-                        beep.play();
-                    }
+                    document.getElementById('temporizador').style.color = '#4ECDC4';
                 }
             }, 1000);
         }
 
-        function actualizarTemporizador() {
-            const minutos = Math.floor(tiempoRestante / 60);
-            const segs = tiempoRestante % 60;
-            document.getElementById('temporizador').textContent = 
-                `${minutos.toString().padStart(2, '0')}:${segs.toString().padStart(2, '0')}`;
-        }
-
         function detenerTemporizador() {
             temporizadorActivo = false;
-            tiempoRestante = 300;
-            actualizarTemporizador();
-            document.getElementById('temporizador').style.color = "var(--color-primary)";
+            document.getElementById('temporizador').textContent = "00:00";
+            document.getElementById('temporizador').style.color = 'var(--color-primary)';
         }
 
-        // Inicializar temporizador
-        document.addEventListener('DOMContentLoaded', actualizarTemporizador);
+        // ===== OBSERVACIÓN PASIVA =====
+        function iniciarTeatroSombras() {
+            const teatro = document.getElementById('teatro-sombras');
+            teatro.innerHTML = '';
+            
+            for (let i = 0; i < 8; i++) {
+                const sombra = document.createElement('div');
+                sombra.className = 'sombra';
+                sombra.style.width = (20 + Math.random() * 60) + 'px';
+                sombra.style.height = sombra.style.width;
+                sombra.style.left = Math.random() * 90 + '%';
+                sombra.style.top = Math.random() * 90 + '%';
+                sombra.style.animationDelay = (Math.random() * 10) + 's';
+                sombra.style.animationDuration = (10 + Math.random() * 20) + 's';
+                teatro.appendChild(sombra);
+            }
+        }
+
+        function iniciarNubeParticulas() {
+            const nube = document.getElementById('nube-particulas');
+            nube.innerHTML = '';
+            
+            for (let i = 0; i < 15; i++) {
+                const particula = document.createElement('div');
+                particula.className = 'particula';
+                particula.style.width = (3 + Math.random() * 8) + 'px';
+                particula.style.height = particula.style.width;
+                particula.style.left = Math.random() * 100 + '%';
+                particula.style.top = Math.random() * 100 + '%';
+                particula.style.animationDelay = (Math.random() * 15) + 's';
+                particula.style.animationDuration = (15 + Math.random() * 10) + 's';
+                nube.appendChild(particula);
+            }
+        }
+
+        // ===== INICIALIZACIÓN =====
+        document.addEventListener('DOMContentLoaded', function() {
+            actualizarPaso();
+            // Precargar algunos audios para mejor experiencia
+            Object.values(audios).slice(0, 3).forEach(audioSrc => {
+                const audio = new Audio(audioSrc);
+                audio.preload = 'auto';
+            });
+        });
     </script>
 </body>
 </html>
