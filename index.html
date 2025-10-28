@@ -71,7 +71,7 @@
             text-decoration: none !important;
         }
 
-        /* Banner Instagram - Estética coherente con las cajas */
+        /* Banner Instagram - Coherente con diseño de cajas */
         .instagram-cta {
             padding: 3rem 0;
             margin: 3rem 0;
@@ -80,14 +80,14 @@
         .ig-banner {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 20px;
-            padding: 3rem;
+            padding: 3rem 2.5rem;
+            border: 2px solid #e3f2fd;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.1);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            overflow: hidden;
         }
 
         .ig-banner::before {
@@ -97,11 +97,11 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
         }
 
         .ig-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #667eea;
             margin-bottom: 1.5rem;
             display: block;
@@ -135,16 +135,17 @@
             gap: 0.8rem;
             transition: all 0.3s ease;
             font-family: 'Montserrat', sans-serif;
-            border: 2px solid transparent;
+            border: none;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .btn-ig:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
             color: white;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
             .ig-banner {
                 padding: 2rem 1.5rem;
@@ -152,7 +153,7 @@
             }
             
             .ig-icon {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
             .ig-content h3 {
@@ -161,10 +162,6 @@
             
             .ig-content p {
                 font-size: 1rem;
-            }
-            
-            .btn-ig {
-                padding: 0.8rem 1.5rem;
             }
         }
     </style>
@@ -346,7 +343,7 @@
             </div>
             
             <div class="regulacion-extra">
-                <p>💡 <strong>Tip neurodivergente:</strong> No todas las crisis son iguales. 
+                <p>💡 <strong>Tip neurodivergente:</strong> No todas las crises son iguales. 
                    <a href="guias.html">Mirá las guías específicas para meltdown, shutdown y burnout</a>.</p>
             </div>
         </div>
