@@ -1,5 +1,4 @@
 /* ===== VARIABLES Y RESET ===== */
-/* ===== VARIABLES Y RESET ===== */
 :root {
     /* Paleta calmante Kodyan Care - Mejorada */
     --color-primary: #6D67E4;         /* Lila principal */
@@ -148,6 +147,7 @@ header {
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
 }
+
 /* BOTÓN DE DONACIONES EN NAVBAR */
 .btn-donar {
     background: linear-gradient(135deg, #FFD166, #FFB347);
@@ -166,104 +166,6 @@ header {
     background: linear-gradient(135deg, #FFB347, #FF9A3C);
 }
 
-/* SECCIÓN DONACIONES EN FOOTER - MEJORADA */
-.donaciones-footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    margin: 3rem 0;
-    background: var(--color-surface);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
-    border: 2px solid var(--color-primary-light);
-    position: relative;
-    overflow: hidden;
-}
-
-.donaciones-footer:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
-}
-
-.donaciones-footer h3 {
-    color: var(--color-text);
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    font-weight: 600;
-}
-
-.donaciones-footer > p {
-    color: var(--color-text-light);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.plataformas-donacion {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    margin: 2rem 0;
-    flex-wrap: wrap;
-}
-
-.btn-donacion {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    color: white !important;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    box-shadow: 0 4px 12px rgba(109, 103, 228, 0.3);
-    border: 2px solid transparent;
-}
-
-.btn-donacion:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(109, 103, 228, 0.4);
-    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-accent));
-}
-
-.donaciones-footer small {
-    color: var(--color-text-light);
-    font-size: 0.95rem;
-    font-style: italic;
-}
-
-/* RESPONSIVE PARA DONACIONES */
-@media (max-width: 768px) {
-    .donaciones-footer {
-        padding: 2.5rem 1.5rem;
-        margin: 2rem 0;
-    }
-    
-    .donaciones-footer h3 {
-        font-size: 1.5rem;
-    }
-    
-    .plataformas-donacion {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .btn-donacion {
-        width: 250px;
-        justify-content: center;
-        padding: 0.9rem 1.5rem;
-    }
-}
 /* Hamburger menu para mobile */
 .hamburger {
     display: none;
@@ -458,23 +360,9 @@ section {
 
 .regulacion-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);  /* ← CAMBIAR ESTA LÍNEA */
+    grid-template-columns: repeat(4, 1fr);
     gap: 2.5rem;
     margin-top: 4rem;
-}
-/* Tablet: 2 columnas */
-@media (max-width: 1024px) {
-    .regulacion-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Mobile: 1 columna */
-@media (max-width: 768px) {
-    .regulacion-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
 }
 
 .regulacion-item {
@@ -553,6 +441,7 @@ section {
     margin-left: auto;
     margin-right: auto;
 }
+
 /* ===== CÓMO AYUDAR SECTION ===== */
 .como-ayudar {
     background: linear-gradient(135deg, #f8f5ff 0%, #f0edff 100%);
@@ -597,16 +486,77 @@ section {
     line-height: 1.6;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .help-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .help-item {
-        padding: 2rem 1.5rem;
-    }
+/* ===== BANNER INSTAGRAM ===== */
+.instagram-cta {
+    padding: 3rem 0;
+    margin: 3rem 0;
+    background: transparent;
+}
+
+.ig-banner {
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+    padding: 3rem 2.5rem;
+    border: 2px solid var(--color-primary-light);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.ig-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+}
+
+.ig-icon {
+    font-size: 3.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.ig-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.ig-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.btn-ig {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: var(--transition);
+    border: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-ig:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    color: white;
 }
 
 /* ===== BUTTONS ===== */
@@ -667,19 +617,44 @@ section {
     box-shadow: 0 6px 20px rgba(109, 103, 228, 0.2);
 }
 
-/* ===== FOOTER ===== */
+/* Fix para líneas en botones - SIN !important */
+.hero-buttons .btn,
+.hero-buttons .btn-primary,
+.hero-buttons .btn-outline,
+.hero-buttons .btn-ig,
+.hero-buttons a {
+    text-decoration: none;
+}
+
+.hero-buttons a.btn:hover,
+.hero-buttons .btn:hover {
+    text-decoration: none;
+}
+
+/* ===== FOOTER CENTRADO CON GRID ===== */
 footer {
     background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-secondary) 100%);
     color: var(--color-text);
     padding: 5rem 0 2rem;
     border-top: 1px solid rgba(109, 103, 228, 0.1);
+    text-align: center;
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
     gap: 3rem;
     margin-bottom: 3rem;
+    text-align: center;
+}
+
+.footer-about,
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .footer-logo {
@@ -695,6 +670,7 @@ footer {
     color: var(--color-text-light);
     line-height: 1.6;
     font-size: 1.1rem;
+    max-width: 300px;
 }
 
 .footer-links h4 {
@@ -710,7 +686,8 @@ footer {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 50px;
     height: 3px;
     background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
@@ -719,10 +696,14 @@ footer {
 
 .footer-links ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
 }
 
 .footer-links li {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .footer-links a {
@@ -730,12 +711,86 @@ footer {
     text-decoration: none;
     transition: var(--transition);
     font-size: 1.1rem;
-    display: block;
 }
 
 .footer-links a:hover {
     color: var(--color-text);
-    padding-left: 8px;
+    transform: translateY(-2px);
+}
+
+/* SECCIÓN DONACIONES EN FOOTER */
+.donaciones-footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--color-primary-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.donaciones-footer:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+}
+
+.donaciones-footer h3 {
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.donaciones-footer > p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.plataformas-donacion {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.btn-donacion {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white !important;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 4px 12px rgba(109, 103, 228, 0.3);
+    border: 2px solid transparent;
+}
+
+.btn-donacion:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(109, 103, 228, 0.4);
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-accent));
+}
+
+.donaciones-footer small {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    font-style: italic;
 }
 
 .copyright {
@@ -762,12 +817,21 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .regulacion-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .hero h1 {
         font-size: 3.2rem;
     }
     
     .section-title h2 {
         font-size: 2.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
     }
 }
 
@@ -825,13 +889,45 @@ footer {
     
     .footer-content {
         grid-template-columns: 1fr;
-        text-align: center;
         gap: 2.5rem;
     }
     
-    .footer-links h4:after {
-        left: 50%;
-        transform: translateX(-50%);
+    .ig-banner {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .ig-icon {
+        font-size: 3rem;
+    }
+    
+    .ig-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .ig-content p {
+        font-size: 1rem;
+    }
+    
+    .donaciones-footer {
+        padding: 2.5rem 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .donaciones-footer h3 {
+        font-size: 1.5rem;
+    }
+    
+    .plataformas-donacion {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .btn-donacion {
+        width: 250px;
+        justify-content: center;
+        padding: 0.9rem 1.5rem;
     }
 }
 
@@ -897,6 +993,21 @@ input:focus {
     outline-offset: 2px;
 }
 
+/* Fix para header mobile que tapa contenido */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px;
+    }
+    
+    .herramienta-detalle {
+        padding: 2rem 0 4rem;
+    }
+    
+    section[id] {
+        scroll-margin-top: 80px;
+    }
+}
+
 /* Debug: Mostrar imágenes faltantes */
 img[src=""], 
 img:not([src]), 
@@ -906,64 +1017,3 @@ img[src*="null"] {
     background: var(--color-emergency-light) !important;
     padding: 1rem;
 }
-
-/* Fix para header mobile que tapa contenido */
-@media (max-width: 768px) {
-    body {
-        padding-top: 80px; /* Espacio para el header fijo */
-    }
-    
-    .herramienta-detalle {
-        padding: 2rem 0 4rem; /* Reduce padding superior */
-    }
-    
-    /* Asegura que los anclajes no queden detrás del header */
-    section[id] {
-        scroll-margin-top: 80px;
-    }
-}
-/* ===== FIXES PARA MODO OSCURO ===== */
-@media (prefers-color-scheme: dark) {
-    .tool-item,
-    .guia-card,
-    .regulacion-item,
-    .descarga-container,
-    .chat-container,
-    .controls,
-    .pasos,
-    .que-decir,
-    .tip,
-    .alerta {
-        background: var(--color-surface) !important;
-        color: var(--color-text) !important;
-        border-color: var(--color-primary-light) !important;
-    }
-    
-    /* Textos específicos */
-    .tool-item p,
-    .guia-card p,
-    .regulacion-item p {
-        color: var(--color-text-light) !important;
-    }
-}
-/* Fix para header mobile que tapa contenido */
-@media (max-width: 768px) {
-    body {
-        padding-top: 80px; /* Espacio para el header fijo */
-    }
-    
-    .herramienta-detalle {
-        padding: 2rem 0 4rem; /* Reduce padding superior */
-    }
-    
-    /* Asegura que los anclajes no queden detrás del header */
-    section[id] {
-        scroll-margin-top: 80px;
-    }
-}
-
-
-
-
-
-
