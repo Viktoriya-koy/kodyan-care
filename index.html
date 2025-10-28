@@ -59,6 +59,159 @@
     <!-- ===== FAVICON ===== -->
     <link rel="icon" href="resources/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="resources/apple-touch-icon.png">
+
+    <!-- ===== ESTILOS TEMPORALES PARA FIXES ===== -->
+    <style>
+        /* Fix para líneas en botones */
+        .btn, .btn-primary, .btn-outline, .btn-ig, .hero-buttons a {
+            text-decoration: none !important;
+        }
+        
+        a.btn:hover {
+            text-decoration: none !important;
+        }
+
+        /* Estilos temporales para banner Instagram */
+        .instagram-cta {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instagram-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .ig-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ig-icon {
+            font-size: 4.5rem;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .ig-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .ig-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .btn-ig {
+            background: rgba(255, 255, 255, 0.95);
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-ig:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            background: white;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .ig-care-line {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .ig-care-line-1 {
+            top: 20%;
+            left: 5%;
+            width: 2px;
+            height: 100px;
+        }
+
+        .ig-care-line-2 {
+            bottom: 30%;
+            right: 8%;
+            width: 100px;
+            height: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .instagram-cta {
+                padding: 3rem 1.5rem;
+                margin: 2rem 0;
+            }
+            
+            .ig-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .ig-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 3.5rem;
+            }
+            
+            .ig-content h3 {
+                font-size: 1.4rem;
+            }
+            
+            .ig-content p {
+                font-size: 1rem;
+            }
+            
+            .btn-ig {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -69,15 +222,15 @@
                 <img src="resources/pulpo-logo.png" alt="Kodyan Care - Primeros Auxilios Emocionales" class="logo-pulpo">
                 Kodyan Care
             </a>
-           <nav>
-    <ul class="nav-links">
-        <li><a href="#herramientas">Herramientas</a></li>
-        <li><a href="#regulacion">Regulación</a></li>
-        <li><a href="#como-ayudar">Cómo Ayudar</a></li>
-        <li><a href="#donaciones" class="btn-donar">☕ Donar</a></li>
-        <li><a href="emergencias.html" class="btn-emergencia">🚨 Emergencia</a></li>
-    </ul>
-</nav>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#herramientas">Herramientas</a></li>
+                    <li><a href="#regulacion">Regulación</a></li>
+                    <li><a href="#como-ayudar">Cómo Ayudar</a></li>
+                    <li><a href="#donaciones" class="btn-donar">☕ Donar</a></li>
+                    <li><a href="emergencias.html" class="btn-emergencia">🚨 Emergencia</a></li>
+                </ul>
+            </nav>
             <div class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
@@ -304,6 +457,8 @@
                 </div>
             </div>
         </div>
+        <div class="ig-care-line ig-care-line-1"></div>
+        <div class="ig-care-line ig-care-line-2"></div>
     </section>
 
     <!-- ===== FOOTER ===== -->
@@ -373,12 +528,3 @@
     <script src="js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
